@@ -1,0 +1,8 @@
+
+main
+
+*.out
+
+\.vscode/extensions\.json
+
+a\.out\.dSYM/
