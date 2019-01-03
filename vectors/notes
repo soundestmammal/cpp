@@ -1,0 +1,37 @@
+
+* Learn about vectors: Vectors are objects
+* Vectors are part of the STL - Standard Template Library
+* It can grow and shrink in size at the execution time
+* Similar semantics and syntax as arrays
+* Very Efficient
+* Can provide bounds checking
+* Can use lots of super cool funcions such as sort, reverse, find, and more.
+
+
+Recap on vectors:
+
+Dynamic Size: They will take on the length of the total amount of declared elements
+
+Elements are all of the same type
+
+Stored Contiguously in memory
+
+Individual elements can be accessed by the position of their index
+
+First element is at index 0
+Last element is at index -1
+
+[] no checking to see if you are out of bounds
+Provides many useful functions to check bounds
+
+Elements are initialized to 0
+Very efficient
+Iteration looping is often used to process
+
+Can grow when needed.
+Will allocate memory for you!
+Must be of the same type!
+.push_back(element)
+
+Most Vector methods provide bounds checking
+An exception and error message is generated
