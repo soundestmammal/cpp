@@ -17,7 +17,6 @@ int main()
     cout << "The average of the three numbers is " << average << endl;
     return 0;
 }
-
 /*
 type coercion: The compiler
 
