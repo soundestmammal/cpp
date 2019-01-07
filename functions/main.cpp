@@ -22,3 +22,6 @@ int main()
     cout << endl;
     return 0;
 }
+
+// Void there is no return type
+
