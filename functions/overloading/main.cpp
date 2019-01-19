@@ -23,6 +23,6 @@ using namespace std;
 
 int main()
 {
-    print(100);
+    print(100.00);
     return 0;
 }
