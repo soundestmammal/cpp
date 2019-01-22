@@ -15,17 +15,19 @@ int main()
     // num = 300;
     // cout << num << endl;
     // cout << ref << endl;
-    vector <string> disney {"Aurora", "Belle", "Cinderella"};
-    for (auto str: disney)
-        str = "Funny";
-    for (auto str: disney)
-        cout << str << endl;
+    // vector <string> disney {"Aurora", "Belle", "Cinderella"};
+    // for (auto str: disney)
+    //     str = "Funny";
+    // for (auto str: disney)
+    //     cout << str << endl;
 
-    for (auto &str: disney)
-        str = "Funny";
+    // for (auto &str: disney)
+    //     str = "Funny";
 
-    for (auto const &str:disney)
-        cout << str << endl;
-    cout << endl;
+    // for (auto const &str:disney)
+    //     cout << str << endl;
+    // cout << endl;
+
+    
     return 0;
 }
