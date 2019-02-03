@@ -4,7 +4,8 @@
 using namespace std;
 
 void prime_calculator(int num){
-    
+    //How to create a prime number?
+    // Well, to start many I should develop a few tests and ID the 
 }
 int main()
 {
