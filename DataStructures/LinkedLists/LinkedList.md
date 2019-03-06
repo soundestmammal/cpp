@@ -34,3 +34,23 @@ head->info (points to the first node and accesses the value "info" of that node)
 head->link (points to the first node and returns the address of the second node)
 head->link->info (points to the first node, then points from the first to the second node, and access info for the second node.)
 
+-----------------------------------------------
+
+Bold! Traversing a Linked List
+
+The basic operations of a linked list are:
+
+-Search the list to determine if an item is in the list
+-Insert an item in the list
+-Delete an item from the list
+
+All of these operations require me to traverse the whole list... 
+
+Why? 
+
+Because when searching the list, we have to walk down the list node by node, and the item
+we are looking for can be at the end of the linked list. We will only know if the item is in or
+not in the list when we traverse the list one node at a time.
+
+We can not use the head to traverse the list. If we did, we would lose the pointer to the beginning of the list. Thus, we must create a pointer of the same type of the nodes, and use that to walk down the list.
+
