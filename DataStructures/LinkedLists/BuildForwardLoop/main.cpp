@@ -36,7 +36,7 @@ nodeType buildListForward()
         current = first;
         while (current != NULL)
         {
-            cout << current->info << " ";
+            cout << current->info << " " << endl;
             current = current->link;
         }
         
