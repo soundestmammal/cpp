@@ -6,3 +6,15 @@ main
 \.vscode/extensions\.json
 
 a\.out\.dSYM/
+
+AStarSolver/aStarGraphTestOne\.png
+
+*.filters
+
+*.user
+
+*.vcxproj
+
+AStarSolver/Debug/
+
+\.vscode/
