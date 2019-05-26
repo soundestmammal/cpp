@@ -11,14 +11,11 @@ namespace farmingdale {
 // define an && operation on status (see the test file for use)
 farmingdale::status operator&&(farmingdale::status originalA, farmingdale::status originalB);
 
-
 struct farmingdale::adjLink {
 	int connectsToNode;
 	double weight;
     adjLink *next;
 };
-
-
 
 struct farmingdale::adjNode {
 	int xCoord;
@@ -51,7 +48,6 @@ public:
 	// syntactic sugar: Note if called without weight, it uses euclidean distance
 	status addEdge(int fromX, int fromY, int toX, int toY, double weight = -1);
 	status computeAStar(int fromX, int fromY, int toX, int toY,int &length, int *list);
-	
 };
 
 
