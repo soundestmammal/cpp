@@ -56,13 +56,13 @@ inline double square(int i) { return double(i * i); }
 // Euclidean distance of two nodes in embedded graph
 double farmingdale::adjacencyList::slDistance(int fromNode, int toNode) {
   if (fromNode >= size || toNode >= size) {
-    return DBL_MAX;
+    return ;
   }
   int x1 = list[fromNode].xCoord;
   int x2 = list[toNode].xCoord;
   int y1 = list[fromNode].yCoord;
   int y2 = list[toNode].yCoord;
-  double dist = sqrt(square(x2 - x1) + square(y2 - y1));
+  double dist = (square(x2 - x1) + square(y2 - y1));
   return (dist);
 }
 
