@@ -29,3 +29,20 @@ Pseuocode:
     Display total estimate:  (number of rooms * price per room) + (number of rooms * price per room * tax rate)
     Display estimate expiration time
 */
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+    cout << "Hello, welcome to the Carpet Cleaning Service" << endl;
+    cout << "\nHow many rooms would you like cleaned? ";
+    
+    int number_of_rooms {0};
+    cin >> number_of_rooms;
+
+    cout << "\nEstimate for carpet cleaning service" << endl;
+    cout << "Number of rooms: " << number_of_rooms << endl;
+
+    cout << endl;
+}
