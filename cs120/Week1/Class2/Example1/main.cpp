@@ -5,6 +5,7 @@
 using namespace std;
 
 int main() {
+    // What is your favorite number
     int num;
 
     cout << "What number is your favorite?\n";

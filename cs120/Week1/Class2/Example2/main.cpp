@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-
+    // Average of a few numbers
     double num1, num2, num3;
     cout << "What is the first number ";
     cin >> num1;
