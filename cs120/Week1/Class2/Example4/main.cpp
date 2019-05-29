@@ -18,5 +18,13 @@ int main() {
 
     cout << "Your miles per gallon (mpg) is " << mpg << endl;
 
+    // Can also be done by:
+
+    // int miles, gallons;
+    // double mpg;
+    // mpg = (double)miles / gallons;
+    // //or
+    // mpg = double(miles) / gallons;
+
     return 0;
 }
