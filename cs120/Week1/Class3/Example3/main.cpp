@@ -13,7 +13,7 @@ int main() {
     cout << "What is your age:  ";
     cin >> age;
 
-    cout << "\nYour name is: " << name << endl;
+    cout << "\nYour name is: " << name << " and your age is: " << age << endl;
     cout << "Your age is: " << age << endl;
 
     return 0;
