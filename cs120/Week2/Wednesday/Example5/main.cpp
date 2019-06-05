@@ -26,3 +26,6 @@ int main() {
 
     return 0;
 }
+
+// pset 2 is due on thursday @ midnight
+// Test on Tuesday
