@@ -1,1 +1,1 @@
-The random number is: 6 and it is even.
+The random number is: 4 and it is even.

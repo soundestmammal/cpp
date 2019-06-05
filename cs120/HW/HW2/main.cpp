@@ -70,8 +70,27 @@ int main() {
        output.open("file.txt");
        output << "The random number is: " << randDieRoll << " and it is odd." << endl;
    }
-
+    // Question 4 on Problem Set
+    /*
+    4. Create 2 random numbers between 1 and 6. 
+    If when the two numbers are added together their sum is 
+    less than 5 or greater than 12, 
+    output to the console: "you win"
+    */
     
+    srand(time(NULL));
+   int randDieRoll1 = rand() % 6 + 1;
+   int randDieRoll2 = rand() % 6 + 1;
+    cout << randDieRoll1 << endl;
+    cout << randDieRoll2 << endl;
+   int sum = randDieRoll1 + randDieRoll2;
+    cout << sum << endl;
+   if (sum < 5 || sum > 12) {
+       cout << "You Win!" << endl;
+   } else {
+       cout << "You didn't win." << endl;
+   }
+
 
 
 
