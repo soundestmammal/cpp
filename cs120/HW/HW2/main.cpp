@@ -53,6 +53,23 @@ int main() {
     }
 
     // Question 3
+    /*
+    3. Create a random number between 1 and 6. 
+    If it is even, output to a file the number and "it is even"; 
+    if it is odd, output to a file the number and "it is odd".
+    */
+   srand(time(NULL));
+   int randDieRoll = rand() % 6 + 1;
+
+   if (randDieRoll % 2 == 0) {
+       ofstream output;
+       output.open("file.txt");
+       output << "The random number is: " << randDieRoll << " and it is even." << endl;
+   } else {
+       ofstream output;
+       output.open("file.txt");
+       output << "The random number is: " << randDieRoll << " and it is odd." << endl;
+   }
 
     
 
@@ -76,7 +93,7 @@ int main() {
     // Check if the width1 is larger
     if (width1 > width2) {
         // This code will only run if Width 1 is larger 
-        cout << "The Width of Rectangle1 is larger than Width of Rectangle2 \n The Area of Rectangle 1 is:  " << (width1 * length1) << " Units."<< endl;
+        cout << "The Width of Rectangle1 is larger than Width of Rectangle2\nThe Area of Rectangle 1 is:  " << (width1 * length1) << " Units."<< endl;
     }
     else {
         // This runs when the Width2 is larger
