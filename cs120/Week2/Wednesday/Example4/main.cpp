@@ -23,6 +23,11 @@ int main() {
         cout << "The number is less than 333" << endl;
     }
 
+    // Ternary Operator in parens condition ? true case : else false case
+    string EvenOrOdd;
+    EvenOrOdd = (num % 2 == 0 ? "Even" : "Odd");
+    cout << (num % 2 == 0 ? "Even" : "Odd") << endl;
+
     return 0;
 }
 
