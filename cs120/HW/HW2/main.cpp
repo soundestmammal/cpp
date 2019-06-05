@@ -27,43 +27,38 @@ int main() {
    } 
    else if (color == "red") {
        cout << "Poor Choice" << endl;
-   } else if (color == "green") {
+   } 
+   else if (color == "green") {
        cout << "Not a bad choice" << endl;
    } 
-   
    else {
        cout << "Sorry, that's not a primary color." << endl;
    }
 
-    string brand;
-    cout << "What type of volleyball do you like the best   ";
-    cin >> brand;
-
-    if (brand == "KOB") {
-        cout << "Nice choice!" << endl;
-    }
-    else if (brand == "WilsonAVP") {
-        cout << "Ok, fair choice" << endl;
-    }
-    else if (brand == "Mikasa") {
-        cout << "Wow $$$" << endl;
-    }
-    else {
-        cout << "You may want to upgrade" << endl;
-    }
-
+    // Question 8 on Problem Set
     double length1 {};
     double width1 {};
     double length2 {};
     double width2 {};
-    double area1 {};
-    double area2 {};
 
     cout << "What is the length of the rectangle 1:     ";
-    cin >> l;
+    cin >> length1;
+    cout << "What is the width of the rectangle 1:      ";
+    cin >> width1;
+    cout << "What is the length of rectangle 2:         ";
+    cin >> length2;
+    cout << "What is the width of rectangle 2:          ";
+    cin >> width2;
 
-    cout << "What is the width of the rectangle 2:      ";
-    cin >> w;
+    // Check if the width1 is larger
+    if (width1 > width2) {
+        // This code will only run if Width 1 is larger 
+        cout << "The Width of Rectangle1 is larger than Width of Rectangle2 \n The Area of Rectangle 1 is:  " << (width1 * length1) << " Units."<< endl;
+    }
+    else {
+        // This runs when the Width2 is larger
+        cout << (width2 * length2) << endl;
+    }
     
     return 0;
 }
