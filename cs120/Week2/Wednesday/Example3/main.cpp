@@ -10,7 +10,7 @@ int main () {
     
     bool warm, raining;
 
-    cout << "Is it hot today?";
+    cout << "Is it hot today?\n";
     cin >> warm;
     cout << "Is it raining today?\n";
     cin >> raining;
