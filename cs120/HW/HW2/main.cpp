@@ -91,6 +91,29 @@ int main() {
        cout << "You didn't win." << endl;
    }
 
+   // Question 5
+   /*
+   5. Use the conditional operator for this problem. 
+   PAY_RATE is 50. 
+   Let the user put in their HOURS_WORKED. 
+   If the hours worked is greater than 10, output to a file the pay (pay_rate * hours_worked) 
+   otherwise output 0.
+   */
+
+  int pay_rate {50};
+  double hours_worked {};
+  cout << "How many hours did you work?     ";
+  cin >> hours_worked;
+
+  if (hours_worked > 10) {
+      ofstream output;
+      output.open("wages.txt");
+      output << "The total pay is:  " << (pay_rate * hours_worked) << endl;
+  } else {
+      ofstream output;
+      output.open("wages.txt");
+      output << 0 << endl;
+  }
 
 
 
