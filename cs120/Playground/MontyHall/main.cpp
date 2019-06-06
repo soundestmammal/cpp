@@ -8,10 +8,10 @@
 
 using namespace std;
 
-int main() {
+// I need to create three Doors
+enum { door1 = 1, door2 = 2, door3 = 3 };
 
-    // I need to create three Doors
-    int door1, door2, door3;
+int main() {
 
     // I need to randomly pick one to have the prize
     // Randomly Generate a number 1-3
@@ -22,8 +22,11 @@ int main() {
     cout << "The door with the prize is door number " << doorWithPrize << endl;
 
     // For example, if 1 is the random number, then door 1 will have the prize.
-    
+    int response {};
+
     // The user will choose a door, either 1 OR 2 OR 3
+    cout << "Choose a door, your options are 1, 2, 3    ";
+    cin >> response;
     
     // Case A: The user Picks the door that has the prize (1/3 chance)
         // I want to reveal one of the two doors that don't have the prize (pick 1 of 2 doors at random)
@@ -31,12 +34,22 @@ int main() {
     // Case B: The user picks the door that doesn't have the prize
         // I want to reveal the other door that doesn't have the prize (only 1 option)
 
-    // Ask the User if they would like to switch doors
+    if (doorWithPrize == response) {
+        // I need to pick from one of the two doors that don't have the prize
+    int reveal {2};
+        // output the door that is now opened
+        cout << "Ok, Door " << reveal << " is revealed to not have the prize." << endl;
+        
+        // Ask the User if they would like to switch doors
+        cout << "Would you like to switch your door? Reply with either a 'Y' OR 'N'     ";
+        // Take the answer if they would like to switch doors
+        string switchDoorRes {};
+        cin >> switchDoorRes;
+    }
 
-    // Take the answer if they would like to switch doors
+
 
     // Reveal if they won the prize
-
 
     return 0;
 }
