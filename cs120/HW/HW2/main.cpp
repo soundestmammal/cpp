@@ -115,8 +115,6 @@ int main() {
       output << 0 << endl;
   }
 
-
-
     // Question 8 on Problem Set
     double length1 {};
     double width1 {};

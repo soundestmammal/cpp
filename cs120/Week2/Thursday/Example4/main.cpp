@@ -35,3 +35,13 @@ int main() {
 
     return 0;
 }
+
+/*
+if statements
+switch statements
+enum example
+fixed set precision
+output to a file
+generate a random number
+set width
+*/
