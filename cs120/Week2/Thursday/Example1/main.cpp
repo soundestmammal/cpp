@@ -20,12 +20,12 @@ int main() {
     }
     else if (quantity >= 100) {
         cout << "The total before discount is " << (quantity * price) << endl;
-        cout << "The cost of this is: " << (quantity * price) * (1.0 - 0.5) << " dollars" << endl;
+        cout << "The cost of this is: " << quantity * price * (1.0 - 0.5) << " dollars" << endl;
         cout << "This discount was 50%" << endl;
     }
     else if (quantity >= 50) {
         cout << "The total before discount is " << (quantity * price) << endl;
-        cout << "The cost of this is: " << (quantity * price) * (1.0-0.4) << " dollars" << endl;
+        cout << "The cost of this is: " << quantity * price * (1.0-0.4) << " dollars" << endl;
         cout << "This discount was 40%" << endl;
     }
     else if (quantity >=20) {
@@ -35,7 +35,7 @@ int main() {
     }
     else if (quantity >= 10) {
         cout << "The total before discount is " << (quantity * price) << endl;
-        cout << "The cost of this is: " << (quantity * price) * (1.0-0.2) << " dollars" << endl;
+        cout << "The cost of this is: " << quantity * price * (1.0-0.2) << " dollars" << endl;
         cout << "This discount was 20%" << endl;
     }
     else {
