@@ -10,6 +10,14 @@ using namespace std;
 
 int main() {
 
+    /*
+    Q1:
+    Q2:
+    Q3:
+    Q4:
+
+    */
+
     /* 1. Ask the user for their favorite color.  
     Create a variable named COLOR to store it. 
     If they choose blue, output "Great choice." 
