@@ -8,6 +8,8 @@
 
 using namespace std;
 
+enum Cars { McClaren = 1, Tesla = 2, Jaguar = 3, Aston_Martin = 4 };
+
 int main() {
 
     srand(time(NULL));
