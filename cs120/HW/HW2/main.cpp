@@ -55,6 +55,7 @@ int main() {
    If it is less than 50 output "you chose a number less than 50." 
    If it is more than 50, output "you chose a number more than 50."
    */
+
     srand(time(NULL));
     // Generate a Random number between 0-99 (Add one to make 1-100)
     int randNum = rand() % 100 + 1;
@@ -93,19 +94,19 @@ int main() {
     less than 5 or greater than 12, 
     output to the console: "you win"
     */
-    
+
     srand(time(NULL));
-   int randDieRoll1 = rand() % 6 + 1;
-   int randDieRoll2 = rand() % 6 + 1;
+    int randDieRoll1 = rand() % 6 + 1;
+    int randDieRoll2 = rand() % 6 + 1;
     cout << randDieRoll1 << endl;
     cout << randDieRoll2 << endl;
-   int sum = randDieRoll1 + randDieRoll2;
+    int sum = randDieRoll1 + randDieRoll2;
     cout << sum << endl;
-   if (sum < 5 || sum > 12) {
+    if (sum < 5 || sum > 12) {
        cout << "You Win!" << endl;
-   } else {
+    } else {
        cout << "You didn't win." << endl;
-   }
+    }
 
    // Question 5
    /*
@@ -158,10 +159,7 @@ int main() {
 
 
     // Question 8 on Problem Set
-    double length1 {};
-    double width1 {};
-    double length2 {};
-    double width2 {};
+    double length1, width1, length2, width2;
 
     cout << "What is the length of the rectangle 1:     ";
     cin >> length1;
