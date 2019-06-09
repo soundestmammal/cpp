@@ -18,6 +18,14 @@ class Player {
 int main() {
     Player Alvin;
     Player Beto;
+    string firstName = "Robert";
+    int age = 24;
+    // enemy is a pointer to a player
+    Player *enemy(nullptr);
+    // Create enemy object on the heap
+    enemy = new Player;
+
+    delete enemy;
     
     return 0;
 }
