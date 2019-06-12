@@ -38,16 +38,47 @@ Leetcode Pattern Number 1:
             4. Repeat 1, 2, 3 while the Stack is not empty.
 */
 
+#include <iostream>
 #include <vector>
+#include <stack>
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
 
 class Solution {
     public:
         // Remember the DFS Magic! : Initialize stack and do the following
         // Pop top, retrieve neighbors for top, push unvisited neighbors to stack | repeat while stack not empty
-        // Because this is a tree no need to keep track of visited as no cycles possible.
+        // Because this is a tree there is no need to keep track of visited as no cycles possible.
 
-        vector<int> preorderTraversal()
-}
+        // Declare a function "preorderTraversal" that accepts a pointer to the root node and returns a vector of ints
+        vector<int> preorderTraversal(TreeNode* root) {
+            // Declare a stack of type pointers to nodes
+            stack<TreeNode*> s;
+            vector<int> result;
+            
+            s.push(root);
+
+            while(!s.empty()){
+                TreeNode* current = s.top();
+                s.pop();
+
+                if(current != NULL){
+                    // push unvisted neighbors to stack | order matters here, if you reverse it
+                    s.push(current->right);
+                    s.push(current->left);
+
+                    result.push_back(current->val);
+                }
+            }
+
+            return result;
+        } // End of function
+}; // End of Class
 
 int main() {
     
