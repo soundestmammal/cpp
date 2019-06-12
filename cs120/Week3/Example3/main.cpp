@@ -20,7 +20,7 @@ int main() {
 
     while(guess != password) {
         if (numTries > 3) {
-            break;
+            exit(0);
         }
         numTries++;
         cout << "What is the password\n";
