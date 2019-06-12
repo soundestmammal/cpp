@@ -8,17 +8,35 @@ using namespace std;
 int main() {
 
     // 0, 1, 1, 2, 3, 5, 8, 13, 21
-    // 5. The fibonacci numbers are 1, 1, 2, 3, 5, 8, 13, 21, ... Use a for loop to list the first 20 Fibonacci Numbers
+    // my approach
+    // Currently failing...
     int first {0};
     int second {1};
     int sum = {};
-    for (int a = 1; a<=20; ++a) {
-        if (a == 1) cout << "Fibonacci Number 1" << " is:   " << 1 << endl;
+    for (int a = 0; a<=20; ++a) {
         sum = first + second;
-        cout << "Fibonacci Number " << a+1 << " is:   " << sum << endl;
+        cout << sum << " ";
         first = second;
         second = sum;
     }
+
+    cout << endl;
+    // Prof implementation
+
+    int a = 0, b = 1, c;
+    int counter = 0;
+
+    cout << a << " " << b << " ";
+
+    while(counter < 10) {
+        c = a + b;
+        cout << c << " ";
+        a = b;
+        b = c;
+        counter++;
+    }
+
+    cout << endl;
 
     return 0;
 }
