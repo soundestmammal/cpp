@@ -46,6 +46,7 @@ struct TreeNode {
     int val;
     TreeNode* left;
     TreeNode* right;
+    // Looks like a constructor...
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
