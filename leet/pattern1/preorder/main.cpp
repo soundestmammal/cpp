@@ -56,10 +56,10 @@ class Solution {
         // Because this is a tree there is no need to keep track of visited as no cycles possible.
 
         // Declare a function "preorderTraversal" that accepts a pointer to the root node and returns a vector of ints
-        vector<int> preorderTraversal(TreeNode* root) {
+        std::vector<int> preorderTraversal(TreeNode* root) {
             // Declare a stack of type pointers to nodes
-            stack<TreeNode*> s;
-            vector<int> result;
+            std::stack<TreeNode*> s;
+            std::vector<int> result;
             
             s.push(root);
 
