@@ -19,8 +19,9 @@ int main() {
     // To force scientific notation... cout << scientific << var1 << endl;
     // setprecision(3)
 
+    cout << setprecision(3) << var1 << endl;
     cout << fixed << setprecision(3) << var1 << endl;
-    cout << setprecision(3) << var2 << endl;
+    cout << setprecision(4) << var2 << endl;
 
     return 0;
 }

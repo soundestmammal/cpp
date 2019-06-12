@@ -32,7 +32,6 @@ int main() {
             cout << "I don't know that kind of car... " << endl;
             break;
     }
-
     return 0;
 }
 
@@ -43,5 +42,5 @@ enum example
 fixed set precision
 output to a file
 generate a random number
-set width
+set width 
 */
