@@ -14,25 +14,10 @@ Algorithms is based on Steven Skiena's Algorithm Design Manual.
 ### Week 1
 
 
-##### Monday
+##### Monday - Class Cancelled (Holiday)
 
 
-##### Tuesday
-
-
-##### Wednesday
-
-
-##### Thursday
-
-
-### Week 2
-
-
-##### Monday
-
-
-##### Tuesday
+##### Tuesday - 
 
 
 ##### Wednesday
@@ -54,3 +39,21 @@ Algorithms is based on Steven Skiena's Algorithm Design Manual.
 
 
 ##### Thursday
+
+
+### Week 3
+
+
+##### Monday - Class Cancelled (Holiday)
+
+
+##### Tuesday - Exam #1
+
+The first Exam Covered all material up to this point.
+
+##### Wednesday
+
+
+##### Thursday
+
+Review Homework #3
