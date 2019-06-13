@@ -6,3 +6,51 @@
 * Algorithms implemented in C++
 
 Algorithms is based on Steven Skiena's Algorithm Design Manual.
+
+
+# CS 120
+
+
+### Week 1
+
+
+##### Monday
+
+
+##### Tuesday
+
+
+##### Wednesday
+
+
+##### Thursday
+
+
+### Week 2
+
+
+##### Monday
+
+
+##### Tuesday
+
+
+##### Wednesday
+
+
+##### Thursday
+
+
+### Week 2
+
+
+##### Monday
+
+
+##### Tuesday
+
+
+##### Wednesday
+
+
+##### Thursday
