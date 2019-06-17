@@ -15,8 +15,8 @@ Question 4:
 multiply them together [Yes, Line 38]
 take the log [Yes, Line 42]
 find just the integer part [Yes, Line 46]
-and if even -> I knew it
-else -> "too bad"
+and if even -> I knew it [Yes, Line 51]
+else -> "too bad" [Yes, Line 52]
 */
 
     int randomRoll1 {};
@@ -47,7 +47,7 @@ else -> "too bad"
     cout << loggedProduct << endl;
     cout << int(loggedProduct) << endl;
 
-    // If it is even
+    // If it is even (Mod 2 will evaluate to false {0} so I flip the sign to ouput true first)
     if (!(int(loggedProduct) % 2)) {
         cout << "I knew it!" << endl;
     } else {
@@ -57,3 +57,6 @@ else -> "too bad"
 
     return 0;
 }
+
+// Critique: I should document my test code better with comments
+// I am just trying to be clear with my solving approach
