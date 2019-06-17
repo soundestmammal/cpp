@@ -59,4 +59,5 @@ else -> "too bad" [Yes, Line 52]
 }
 
 // Critique: I should document my test code better with comments
-// I am just trying to be clear with my solving approach
+// I am just trying to be clear with my solving approach so if I make a mistake
+// I can catch it, or you can see where I went wrong and easily give PC.
