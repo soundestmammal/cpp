@@ -9,7 +9,7 @@ using namespace std;
 int main() {
 
 /*
-Question 5:
+Question 5: Full Credit - Works fine for me in all cases
 Q: Provide a number between 1 and 100, give user two chances to provide a valid number. 
 */ 
     int response5 {};
