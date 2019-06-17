@@ -8,13 +8,17 @@ using namespace std;
 
 int main() {
 
-// 5. 
+/*
+Question 5:
+Q: Provide a number between 1 and 100, give user two chances to provide a valid number. 
+*/ 
     int response5 {};
     cout << "Give me a number between 1 and 100     ";
     cin >> response5;
     ofstream output;
     output.open("file.txt");
 
+    // Will run if given an INVALID number on first response
     if(response5 < 1 || response5 > 100) {
         cout << "That was not a valid response. I'll give you one more chance to give me a valid number." << endl;
         cout << "Give me a number between 1 and 100     ";
@@ -28,6 +32,7 @@ int main() {
                 output << "Even" << endl;
             }
         }
+        // Will run if given a valid number on first response
     } else {
         if (response5 % 2) {
             // runs when odd
