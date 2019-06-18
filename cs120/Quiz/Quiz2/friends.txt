@@ -1,0 +1,3 @@
+Yann Lecun
+Geoff Hinton
+Al Gorithm
