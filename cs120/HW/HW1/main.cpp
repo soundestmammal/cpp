@@ -32,7 +32,7 @@ int main() {
     cout << "Give a temperature in celsius:  ";
     cin >> celsius;
 
-    fahrenheit = ((9/5) * (celsius + 32));
+    fahrenheit = ((9/5.0) * (celsius + 32));
     cout << "The temperature in Fahrenheit is: " << fahrenheit << endl;
 
     /*3. Find the value of 2^8 and store it in a variable called POWERTEST.*/
