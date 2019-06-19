@@ -9,10 +9,34 @@
 
 using namespace std;
 
-// I need to create three Doors
-enum { door1 = 1, door2 = 2, door3 = 3 };
+// Function Prototypes
+void doorLogger(int firstSelection, int doorWithPrize, int reveal);
 
-int toReveal(vector <int> &doors) {
+/*
+What is the problem solving approach?
+
+    0. Ask the user to pick one of the three doors
+
+Either:
+
+    1. They Pick the door with the prize
+        a. Randomly reveal one of the other two doors (Switch Statement)
+    2. They Pick the door without the prize
+        a. Reveal the only possible door
+
+Then
+    3. Ask if they would like to switch
+
+        a. They switch
+        b. They don't switch
+    
+
+*/
+
+// I need to create three Doors
+// enum { door1 = 1, door2 = 2, door3 = 3 };
+
+int toReveal(vector<int> &doors) {
     int count {};
     for (int i = 0; i<doors.size(); ++i) {
         if(doors[i] == 0) {
@@ -22,18 +46,18 @@ int toReveal(vector <int> &doors) {
     // Will only execute if it is odd
     // AKA they didn't pick the correct door
     // Aka there is only one valid option
-    if (count % 2) {
+    // if (count % 2) {
         
-    }
+    // }
 }
 
 int main() {
-    int wins {0};
-    int losses {0};
+    int wins {};
+    int losses {};
     // for (int i= 0; i<100; ++i) {
         // Randomly Generate a number 1-3 to determine which door has the prize
         srand(time(NULL));
-        int doorWithPrize = rand() % 3;
+        int doorWithPrize = rand() % 3 ;
 
         vector <int> doors {0, 0, 0};
         doors[doorWithPrize] = 1;
@@ -55,6 +79,7 @@ int main() {
         cout << "Choose a door, your options are 0, 1, 2    ";
         cin >> firstSelection;
         
+        // This runs when they select door with the prize
         if (doorWithPrize == firstSelection) {
 
             // I need to pick from one of the two doors that don't have the prize
@@ -65,10 +90,33 @@ int main() {
                 reveal = rand() % 3;
             }
 
+            // Use a switch statement
+
+            // What are the options
+
+            /*
+            Possible Cases
+                1. They pick the left door, and they pick the prize
+                2. They pick the center door, and they pick the prize
+                3. They pick the right door, and they pick the prize
+            */
+
+            switch(firstSelection) {
+                 case 0: {
+                     break;
+                 };
+                 case 1: {
+                     break;
+                 };
+                 case 2: {
+                     break;
+                 };
+            }
+
             // output the door that is now opened
-            cout << "You chose door number: " << firstSelection << endl;
-            cout << "Shhhh, the prize is behind door number: " << doorWithPrize << endl;
-            cout << "Ok, Door " << reveal << " is revealed to not have the prize." << endl;
+
+            // Log out the status of the doors
+            // doorLogger(firstSelection, doorWithPrize, reveal);
             
             // Ask the User if they would like to switch doors
             cout << "Would you like to switch your door? Reply with either a 'Y' OR 'N'     ";
@@ -95,6 +143,22 @@ int main() {
             else {
                 cout << "You gave an invalid firstSelection to switching doors" << endl;
             }
+        } else {
+            // They chose the door that doesn't have the prize
+            // This is the case where I need to show them the only remaining door
+            int toReveal {};
+            for (int i = 0; i < doors.size(); i++)
+            {
+                if(doors[i] == 0) {
+                    toReveal = i;
+                }
+            }
+
+            // Ask them if they would like to change doors:
+
+
+            
+
         }
         cout << endl;
         cout << endl;
@@ -119,6 +183,18 @@ int main() {
     
     return 0;
 }
+
+void doorLogger(int firstSelection, int doorWithPrize, int reveal) {
+    cout << "You chose door number: " << firstSelection << endl;
+    cout << "Shhhh, the prize is behind door number: " << doorWithPrize << endl;
+    cout << "Ok, Door " << reveal << " is revealed to not have the prize." << endl;
+}
+
+
+
+
+
+
 
 // Suppose Door 2 has the prize
 // User picks Door 2
