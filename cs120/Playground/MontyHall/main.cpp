@@ -10,8 +10,11 @@
 using namespace std;
 
 // Function Prototype Stuff
-void doorLogger(int firstSelection, int doorWithPrize, int reveal, int finalSelection);
+// void doorLogger(int firstSelection, int doorWithPrize, int reveal, int finalSelection);
 void firstReveal(int firstSelection, int& reveal, vector<int>& doors);
+int automatedDoorSelection();
+string stickWithFirstDoor();
+string alwaysSwitchDoors();
 
 /*
 What is the problem solving approach?
@@ -30,47 +33,33 @@ Then
 
         a. They switch
         b. They don't switch
-    
 
 */
 
 
-// int toReveal(vector<int> &doors) {
-//     int count {};
-//     for (int i = 0; i<doors.size(); ++i) {
-//         if(doors[i] == 0) {
-//             count++;
-//         }
-//     }
-//     // Will only execute if it is odd
-//     // AKA they didn't pick the correct door
-//     // Aka there is only one valid option
-//     // if (count % 2) {
-        
-//     // }
-// }
-
-int main() {
+int main() {    
     int wins {};
     int losses {};
         // Randomly Generate a number 0-2 to determine which door has the prize
         srand(time(NULL));
+    for (long i = 0; i < 100000; i++) {
         int doorWithPrize = rand() % 3 ;
         vector <int> doors {0, 0, 0};
         doors[doorWithPrize] = 1;
 
         // The random number will be the door that has the prize
-        cout << "The door with the prize is door number " << doorWithPrize << endl;
+        // cout << "The door with the prize is door number " << doorWithPrize << endl;
 
-        for (int i = 0; i < doors.size(); ++i) {
-            cout << "The value behind door" << i << " is " << doors[i] << endl;
-        }
+        // for (int i = 0; i < doors.size(); ++i) {
+        //     cout << "The value behind door" << i << " is " << doors[i] << endl;
+        // }
 
         int firstSelection {};
         int finalSelection = -1;
 
-        cout << "Choose a door, your options are 0, 1, 2    ";
-        cin >> firstSelection;
+        // cout << "Choose a door, your options are 0, 1, 2    ";
+        // cin >> firstSelection;
+        firstSelection = automatedDoorSelection();
         
         // This runs when they select door with the prize
         if (doorWithPrize == firstSelection) {
@@ -80,7 +69,7 @@ int main() {
            firstReveal(firstSelection, reveal, doors);
 
             // Log out the status of the doors
-            doorLogger(firstSelection, doorWithPrize, reveal, finalSelection);
+            // doorLogger(firstSelection, doorWithPrize, reveal, finalSelection);
 
 
             /*What am I trying to do?
@@ -90,16 +79,17 @@ int main() {
              */
             
             string switchDoorRes {};
-            cout << "Would you like to switch your door? Reply with either yes OR no     ";
+            // cout << "Would you like to switch your door? Reply with either yes OR no     ";
             // Take the answer if they would like to switch doors
-            cin >> switchDoorRes;
+            // cin >> switchDoorRes;
+            switchDoorRes = alwaysSwitchDoors() ;
             if (switchDoorRes == "yes"){
                 // finalSelection must be the only remaining closed door
                 for (int i = 0; i < doors.size(); i++)
                 {
                     if(doors[i] == 0) {
                         finalSelection = i;
-                        cout << finalSelection << endl;
+                        // cout << finalSelection << endl;
                     }
                 }
             }
@@ -109,7 +99,7 @@ int main() {
             else {
                 cout << "You gave an invalid firstSelection to switching doors" << endl;
             }
-            doorLogger(firstSelection, doorWithPrize, reveal, finalSelection);
+            // doorLogger(firstSelection, doorWithPrize, reveal, finalSelection);
         } else {
             // They chose the door that doesn't have the prize
             // This is the case where I need to show them the only remaining door
@@ -121,13 +111,13 @@ int main() {
             }
             
 
-            doorLogger(firstSelection, doorWithPrize, toReveal, finalSelection);
+            // doorLogger(firstSelection, doorWithPrize, toReveal, finalSelection);
 
-            // Ask them if they would like to change doors:
             string switchDoorRes {};
-            cout << "Would you like to switch your door? Reply with either yes OR no     ";
-            // Take the answer if they would like to switch doors
-            cin >> switchDoorRes;
+            // cout << "Would you like to switch your door? Reply with either yes OR no     ";
+            // cin >> switchDoorRes;
+            switchDoorRes = alwaysSwitchDoors();
+             
             if (switchDoorRes == "yes"){
                 /* If they want to switch doors:
                     They must have chosen the incorrect door initially. 
@@ -143,21 +133,21 @@ int main() {
             else {
                 cout << "You gave an invalid firstSelection to switching doors" << endl;
             }
-            doorLogger(firstSelection, doorWithPrize, toReveal, finalSelection);
+            // doorLogger(firstSelection, doorWithPrize, toReveal, finalSelection);
         }
 
         // Reveal if they won the prize
         if (doorWithPrize == finalSelection) {
-            cout << "Congratulations, you won the prize!" << endl;
+            // cout << "Congratulations, you won the prize!" << endl;
             wins++;
 
         } else {
-            cout << "Sorry you did not win the prize..." << endl;
+            // cout << "Sorry you did not win the prize..." << endl;
             losses++;
         }
         cout << "Current tally of wins:     " << wins << endl;
         cout << "Current tally of losses:   " << losses << endl;
-    // }
+    }
     cout << "Number of Wins:    " << wins << endl;
     cout << "Number of Losses:  " << losses << endl;
     
@@ -234,21 +224,6 @@ string stickWithFirstDoor() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-// Suppose Door 2 has the prize
-// User picks Door 2
-
-// Lines Hardcoded 56 and 57 and 31
 
 /*
 
