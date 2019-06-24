@@ -4,22 +4,35 @@
 ## Week 1
 
 
-### Monday - Class Cancelled (Holiday)
+### Monday May 27, 2019
+Class Cancelled
 
+### Tuesday May 28, 2019
 
-### Tuesday
+Topics Covered:
 
+* What is programming
+* Variables
+* Types in C++
+* Console Input/Output
 
-##### Wednesday
+### Wednesday May 29, 2019
 
+Topics Covered:
 
-##### Thursday
+* Console Input/Output
+* Math Operations in C++
+* Mod Operator (%)
+* Char in C++
+* Open Q: How to take input with spaces?
+
+### Thursday May 30, 2019
 
 
 ## Week 2
 
 
-### Monday
+### Monday June 03, 2019
 
 Topics Covered:
 
@@ -32,7 +45,7 @@ Topics Covered:
 * Scope
 * Shifting Characters in C++
 
-### Tuesday
+### Tuesday June 04, 2019
 
 Topics Covered:
 
@@ -41,18 +54,14 @@ Topics Covered:
 * Generating Random Numbers
 * Ternary Operator
 
-### Wednesday
+### Wednesday June 05, 2019
 
 
-### Thursday
+### Thursday June 06, 2019
 
 Problem Set #2 Due
 
-
-
-
 ## Week 3
-
 
 ### Monday June 10, 2019
 
@@ -113,5 +122,10 @@ What was done:
 
 Review Exam #2
 
+### Tuesday June 25, 2019
+
+### Wednesday June 26, 2019
+
+### Thursday June 27, 2019
 
 
