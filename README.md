@@ -1,23 +1,13 @@
-### Home to my C++ code
-### Began Learning C++ Dec 22nd 2018 for Algorithms Class
-
-#### I am going to make this section consist of two main parts.
-* C++ Code
-* Algorithms implemented in C++
-
-Algorithms is based on Steven Skiena's Algorithm Design Manual.
+# CS 120 - Summer 2019
 
 
-# CS 120
+## Week 1
 
 
-### Week 1
+### Monday - Class Cancelled (Holiday)
 
 
-##### Monday - Class Cancelled (Holiday)
-
-
-##### Tuesday - 
+### Tuesday
 
 
 ##### Wednesday
@@ -26,34 +16,102 @@ Algorithms is based on Steven Skiena's Algorithm Design Manual.
 ##### Thursday
 
 
-### Week 2
+## Week 2
 
 
-##### Monday
+### Monday
+
+Topics Covered:
+
+* Set Precision for numbers
+* Scientific Notation
+* Numbers in C++
+* OR Logical Operator
+* AND Logical Operator
+* If Statements
+* Scope
+* Shifting Characters in C++
+
+### Tuesday
+
+Topics Covered:
+
+* File Input/Output
+* If, else if, else
+* Generating Random Numbers
+* Ternary Operator
+
+### Wednesday
 
 
-##### Tuesday
+### Thursday
+
+Problem Set #2 Due
 
 
-##### Wednesday
 
 
-##### Thursday
+## Week 3
 
 
-### Week 3
+### Monday June 10, 2019
 
+Class Cancelled due to Holiday
 
-##### Monday - Class Cancelled (Holiday)
-
-
-##### Tuesday - Exam #1
+### Tuesday June 11, 2019
 
 The first Exam Covered all material up to this point.
 
-##### Wednesday
+### Wednesday June 12, 2019
 
 
-##### Thursday
+### Thursday June 13, 2019
 
 Review Homework #3
+
+## Week 4
+
+
+### Monday June 17, 2019
+
+Topics Covered: 
+
+* Functions
+* Function Prototypes
+* Function Parameters
+* Function Return Types
+
+
+### Tuesday June 18, 2019
+
+Topics Covered:
+
+* Memory in C++
+* References
+* Pointers
+* Pass by value
+* Pass by reference
+
+
+### Wednesday June 19, 2019
+
+Topics Covered:
+
+* Solving problems using functions
+
+### Thursday June 20, 2019
+
+Exam #2: Functions
+
+
+## Week 5
+
+
+### Monday June 24, 2019
+
+What was done: 
+
+Review Exam #2
+
+
+
