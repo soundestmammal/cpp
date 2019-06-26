@@ -132,6 +132,14 @@ Topics Covered:
 
 ### Wednesday June 26, 2019
 
+Topics Covered:
+
+* Review Problem Set #5
+* Go through the Assessment Questions
+* Assessment - Functions & Arrays
+
 ### Thursday June 27, 2019
+
+Final Exam
 
 
