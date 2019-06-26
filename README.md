@@ -1,8 +1,6 @@
 # CS 120 - Summer 2019
 
-
 ## Week 1
-
 
 ### Monday May 27, 2019
 Class Cancelled
@@ -120,9 +118,17 @@ Exam #2: Functions
 
 What was done: 
 
-Review Exam #2
+* Review Exam #2
+* Arrays
 
 ### Tuesday June 25, 2019
+
+Topics Covered:
+
+* Object Oriented Programming
+* Intuition of a Class
+* Class Constructors
+* Assessment Questions
 
 ### Wednesday June 26, 2019
 
