@@ -20,3 +20,5 @@ AStarSolver/Debug/
 \.vscode/
 
 cs120/HW/hw5
+
+*.txt
