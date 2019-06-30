@@ -24,13 +24,13 @@ int main() {
     int firstSelection {};
     int finalSelection = -1;
     int reveal {};
-    bool alwaysSwitch = false; // true -> 66% ; false -> 33%
+    bool alwaysSwitch = true; // true -> 66% ; false -> 33%
     string switchDoorRes {};
 
     // Randomly Generate a number 0-2 to determine which door has the prize
     srand(time(NULL));
 
-    for (long i = 0; i < 10000; i++) {
+    for (long i = 0; i < 100000; i++) {
         int doorWithPrize = rand() % 3;
         vector <int> doors {0, 0, 0};
         doors[doorWithPrize] = 1;
