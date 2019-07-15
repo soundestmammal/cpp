@@ -164,17 +164,14 @@ string stickWithFirstDoor() {
 }
 
 
+// Case A: The user Picks the door that has the prize (1/3 chance)
+    // I want to reveal one of the two doors that don't have the prize (pick 1 of 2 doors at random)
 
+// Case B: The user picks the door that doesn't have the prize
+    // I want to reveal the other door that doesn't have the prize (only 1 option)
 
+/*
 
-
-        // Case A: The user Picks the door that has the prize (1/3 chance)
-            // I want to reveal one of the two doors that don't have the prize (pick 1 of 2 doors at random)
-        
-        // Case B: The user picks the door that doesn't have the prize
-            // I want to reveal the other door that doesn't have the prize (only 1 option)
-
-            /*
 What is the problem solving approach?
 
     0. Ask the user to pick one of the three doors
@@ -186,7 +183,8 @@ Either:
     B. They Pick the door without the prize
         a. Reveal the only possible door
 
-Then
+Then:
+
     3. Ask if they would like to switch
 
         a. They switch
