@@ -23,8 +23,7 @@ int main() {
     if (first == NULL) {
         first = newNode;
         last = newNode;
-    }
-    else {
+    } else {
         last->link = newNode;
         last = newNode;
     }
