@@ -8,10 +8,10 @@ class Nose {
         string type;
         int size;
     public:
-        Nose() { type = "A"; size = 1; }
+        Nose() { type = "A"; size = 1; };
         Nose(string t, int s) : type(t), size(s) {
             cout << "In the constructor" << endl;
-        }
+        };
     
     // setters
     void setType(string t) { type = t; };
