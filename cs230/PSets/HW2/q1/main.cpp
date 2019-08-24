@@ -14,15 +14,15 @@ using namespace std;
 
 int main() {
     srand(time(NULL));
-    const int SIZE = 100;
-    double x[SIZE];
-    double theNewArray[SIZE];
+    const int SIZE1 = 100;
+    double x[SIZE1];
+    double theNewArray[SIZE1];
 
-    doubleFillArray(x, SIZE);
-    outputArrayToFile(x, SIZE);
+    doubleFillArray(x, SIZE1);
+    outputArrayToFile(x, SIZE1);
     readTheArray(theNewArray);
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE1; i++)
     {
         cout << fixed << setprecision(3) << theNewArray[i] << endl;
     }
