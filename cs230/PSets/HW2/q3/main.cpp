@@ -12,16 +12,16 @@ using namespace std;
 
 int main() {
     srand(time(NULL));
-    const int SIZE = 10;
+    const int SIZE3 = 10;
     int emptyArray[11];
-    int original[SIZE];
+    int original[SIZE3];
 
-    for (int i = 0; i < SIZE; i++)
+    for (int i = 0; i < SIZE3; i++)
     {
         original[i] = rand() % 101 + 1;
     }
 
-    copyAndInsertArray(emptyArray, 11, original, SIZE, 5, 69);
+    copyAndInsertArray(emptyArray, 11, original, SIZE3, 5, 69);
     
     ofstream output;
     output.open("new.txt");
