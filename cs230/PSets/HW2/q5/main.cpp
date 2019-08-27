@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <iomanip>
+using namespace std;
 
 // Function Header/Prototype Things:
 int min(int x[], int size);
@@ -11,19 +12,17 @@ int max(int x[], int size);
 double average(int x[], int size);
 void summaryStats(int x[], int size);
 
-using namespace std;
-
 int main() {
     srand(time(NULL));
-    int original[100];
+    int original5[100];
 
     // Populate an array
     for (int i = 0; i < 100; i++)
     {
-        original[i] = rand() % 100 + 1;
+        original5[i] = rand() % 100 + 1;
     }
 
-    summaryStats(original, 100);
+    summaryStats(original5, 100);
     return 0;
 }
 
