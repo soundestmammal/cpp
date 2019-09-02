@@ -6,7 +6,6 @@ LinkedList::LinkedList() {
     length = 0;
     head = NULL;
     tail = NULL;
-    current = head;
 }
 
 // Destructor
@@ -14,22 +13,35 @@ LinkedList::~LinkedList() {
     std::cout << "This is the linked list destructor" << std::endl;
 }
 
+bool LinkedList::isEmpty() {
+    return (NULL == head && NULL == tail ? true : false);
+}
+
 // Method to Build the Linked List with user input data
 void LinkedList::buildItForward() {
+    Node* currentNode; // A temporary pointer to the nodes of the Linked List
     int res;
     bool flag = true;
     int counter = 0;
+    /*
+
+    This is passing but is just really bad execution of this code...
+    
+    */
+
     while(counter < 5) { // 5 for now, just for initial setup
         std::cout << "Give the data ";
         std::cin >> res;
-        if(head == tail) {
+        if(NULL == head) {
             head = new Node(res);
-            current = head;
-            current->next = NULL;
+            currentNode = head;
+            currentNode->next = NULL;
+            tail = head;
+
         } else {
-            current->next = new Node(res);
-            current = current->next;
-            current->next = NULL;
+            tail->next = new Node(res);
+            tail = tail->next;
+            tail->next = NULL;
         }
         counter++;
         length++;
@@ -37,11 +49,28 @@ void LinkedList::buildItForward() {
 }
 
 void LinkedList::traverse() {
-    current = head;
-    while(current != NULL) {
-        std::cout << current->data << std::endl;
-        current = current->next;
+    Node* currentNode = head; // A temporary pointer to walk down the linked list
+    while(NULL != currentNode) {
+        std::cout << currentNode->data << std::endl;
+        currentNode = currentNode->next;
     }
 }
 
 int LinkedList::getLength() { return length; }
+
+int LinkedList::getFirst() { 
+    if(this->isEmpty()) {
+        std::cerr << "There was an error and the program terminated" << std::endl;
+        exit(1);
+    } else {
+        return head->data;
+    }
+}  
+int LinkedList::getLast() { 
+    if(this->isEmpty()) {
+        std::cerr << "There was an error and the program terminated" << std::endl;
+        exit(1);
+    } else {
+        return tail->data;
+    }
+}

@@ -13,4 +13,6 @@ public:
     void buildItForward(); // Method to build LL with user input data
     void traverse(); // Method to traverse LL and print out data to console
     int getLength();  // Get the length of the LL
+    int getFirst(); // Get data from the first item in LL
+    int getLast(); // Get data from the last item in LL
 };
