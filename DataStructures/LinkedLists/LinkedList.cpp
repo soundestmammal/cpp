@@ -74,3 +74,44 @@ int LinkedList::getLast() {
         return tail->data;
     }
 }
+
+Node* LinkedList::thirdItem() {
+    Node* ptr;
+    int count = 3;
+    while(count != 0) {  
+        count--;
+  
+        ptr = head;
+        ptr = ptr->next;
+    }
+    return ptr;
+}
+
+bool LinkedList::findItem(const Node* item) {
+    Node* tempPointer;
+    tempPointer = head;
+    while(tempPointer != NULL) {
+        if(tempPointer == item) {
+            return true;
+        }
+        tempPointer = tempPointer->next;
+    }
+    return false;
+}
+
+// Computational Complexity is 0(n) because the while loop will run n times where n is the length of the LL
+void LinkedList::deleteList() {
+    Node* temp; // Temp pointer to deallocate memory of Linked List Items
+    temp = head; // Begin @ head
+    
+    // delete the current head node at each iteration until List is Empty
+    while (head != NULL) {
+        temp = head;
+        head = head->next;
+        delete temp;
+    }
+
+    // Must reset the values for tail and length since LL is empty
+    tail = NULL;
+    length = 0;
+}
