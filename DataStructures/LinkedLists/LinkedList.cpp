@@ -6,19 +6,23 @@ LinkedList::LinkedList() {
     length = 0;
     head = NULL;
     tail = NULL;
+    std::cout << "This is the LL constructor" << std::endl;
 }
 
 // Destructor
 LinkedList::~LinkedList() {
     std::cout << "This is the linked list destructor" << std::endl;
+    deleteList();
 }
 
+// Returns true if the LinkedLIst isEmpty Returns False if the LL is not empty
 bool LinkedList::isEmpty() {
     return (NULL == head && NULL == tail ? true : false);
 }
 
 // Method to Build the Linked List with user input data
-void LinkedList::buildItForward() {
+// I should eventually make this take many different types with template thing...
+void LinkedList::build(int size) {
     Node* currentNode; // A temporary pointer to the nodes of the Linked List
     int res;
     bool flag = true;
@@ -26,10 +30,11 @@ void LinkedList::buildItForward() {
     /*
 
     This is passing but is just really bad execution of this code...
+    UPDATE: Slightly less bad, can now set the size of the linked list
     
     */
 
-    while(counter < 5) { // 5 for now, just for initial setup
+    while(counter < size) { 
         std::cout << "Give the data ";
         std::cin >> res;
         if(NULL == head) {
@@ -54,6 +59,7 @@ void LinkedList::traverse() {
         std::cout << currentNode->data << std::endl;
         currentNode = currentNode->next;
     }
+    // Do I need to free up that pointer? Delete the pointer variable but not the object it points to.. hm
 }
 
 int LinkedList::getLength() { return length; }
@@ -159,6 +165,17 @@ void LinkedList::deleteItem(const Node* item) {
         delete trail;
     }
 
-    // Case 4: The Item could not be found in th elinked list.
+    // Case 4: The Item could not be found in thenlinked list.
     std::cerr << "The item could not be found in the Linked List" << std::endl;
+}
+
+void LinkedList::initializeList() {
+    deleteList();
+}
+
+void LinkedList::insertFirst(int data) {
+    Node* temp = head;
+    head = new Node(data);
+    head->next = temp;
+    // How do I free up this temporary pointer?
 }
