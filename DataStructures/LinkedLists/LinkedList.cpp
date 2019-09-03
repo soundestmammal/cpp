@@ -139,6 +139,7 @@ void LinkedList::deleteItem(const Node* item) {
         Node* temp = head;
         head = head->next;
         delete temp;
+        length--;
         std::cout << "The item was the first item in the list, and it has been deleted!" << std::endl;
         return;
     } else {
@@ -156,6 +157,7 @@ void LinkedList::deleteItem(const Node* item) {
             if(temp == item) {
                 trail->next = temp->next; // Have the trail->next point to the correct next node
                 delete temp;
+                length--;
                 std::cout << "The item was in the list, and we found it and deleted it!" << std::endl;
                 return;
             }
@@ -177,5 +179,6 @@ void LinkedList::insertFirst(int data) {
     Node* temp = head;
     head = new Node(data);
     head->next = temp;
+    length++;
     // How do I free up this temporary pointer?
 }
