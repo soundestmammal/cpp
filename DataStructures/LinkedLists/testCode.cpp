@@ -12,7 +12,7 @@ int testCode() {
     std::cout << empty.getLast() << std::endl;
 
     LinkedList l;
-    l.buildItForward();
+    l.build(5);
     std::cout << l.getLength() << std::endl;
     std::cout << l.getFirst() << std::endl;
     std::cout << l.getLast() << std::endl;
@@ -26,7 +26,7 @@ int testCode() {
 
     // Test if the deleteList method works!
     LinkedList listt;
-    listt.buildItForward();
+    listt.build(5);
     std::cout << listt.isEmpty() << std::endl;
     listt.deleteList();
     std::cout << listt.isEmpty() << std::endl; 
@@ -35,7 +35,7 @@ int testCode() {
 
     // This is to test the search linked list method and the third item methods
     LinkedList listt;
-    listt.buildItForward();
+    listt.build(5);
     std::cout << listt.isEmpty() << std::endl; // Should output 0
 
     Node* item = listt.nthItem(5);
@@ -50,13 +50,20 @@ int testCode() {
     /* ************************************************************************************** */
 
     LinkedList aList;
-    aList.buildItForward();
+    aList.build(5);
     aList.traverse();
     Node* item = aList.nthItem(2);
 
     aList.deleteItem(item);
     aList.traverse();
 
+    /* ************************************************************************************** */
+
+    LinkedList last;
+    last.build(4);
+    last.traverse();
+    last.insertFirst(314);
+    last.traverse();
 
     return 0;        
 }
