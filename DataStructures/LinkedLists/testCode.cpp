@@ -24,5 +24,27 @@ int testCode() {
             std::cout << "This linked list contains items" << std::endl;
         }
 
+    // Test if the deleteList method works!
+    LinkedList listt;
+    listt.buildItForward();
+    std::cout << listt.isEmpty() << std::endl;
+    listt.deleteList();
+    std::cout << listt.isEmpty() << std::endl; 
+
+    // This is to test the search linked list method and the third item methods
+    LinkedList listt;
+    listt.buildItForward();
+    std::cout << listt.isEmpty() << std::endl; // Should output 0
+
+    Node* item = listt.thirdItem();
+    std::cout << listt.findItem(item) << std::endl; // Should output 1
+
+    listt.deleteList(); // Should output 5 node destructors
+    std::cout << listt.isEmpty() << std::endl; // Should output 1
+    std::cout << listt.findItem(item) << std::endl; // Should output 0
+    
+    // Should be a linked list destructor log
+
+
     return 0;        
 }
