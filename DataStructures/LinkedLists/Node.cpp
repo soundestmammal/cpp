@@ -5,6 +5,7 @@
 Node::Node(int data) {
     this->data = data;
     next = NULL;
+    std::cout << "This is the node constructor" << std::endl;
 }
 
 // Destructor
