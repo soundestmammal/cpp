@@ -31,6 +31,8 @@ int testCode() {
     listt.deleteList();
     std::cout << listt.isEmpty() << std::endl; 
 
+    /* ************************************************************************************** */
+
     // This is to test the search linked list method and the third item methods
     LinkedList listt;
     listt.buildItForward();
@@ -44,6 +46,16 @@ int testCode() {
     std::cout << listt.findItem(item) << std::endl; // Should output 0
     
     // Should be a linked list destructor log
+
+    /* ************************************************************************************** */
+
+    LinkedList aList;
+    aList.buildItForward();
+    aList.traverse();
+    Node* item = aList.nthItem(2);
+
+    aList.deleteItem(item);
+    aList.traverse();
 
 
     return 0;        

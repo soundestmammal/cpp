@@ -18,4 +18,5 @@ public:
     bool findItem(const Node *item); // Search for a given item in the linked list 
     void deleteList(); // Deallocate the memory from the heap that the Linked Lists required
     Node* nthItem(int count); // Return the memory address of the third node
+    void deleteItem(const Node* item); // Given an item, delete the item from the list
 };

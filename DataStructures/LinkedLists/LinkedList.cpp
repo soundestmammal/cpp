@@ -76,11 +76,10 @@ int LinkedList::getLast() {
 }
 
 Node* LinkedList::nthItem(int count) {
-    Node* ptr;
+    Node* ptr = head;
     while(count != 0) {  
         count--;
   
-        ptr = head;
         ptr = ptr->next;
     }
     return ptr;
@@ -113,4 +112,53 @@ void LinkedList::deleteList() {
     // Must reset the values for tail and length since LL is empty
     tail = NULL;
     length = 0;
+}
+
+void LinkedList::deleteItem(const Node* item) {
+
+    // Case 1: What if the Linked List is empty?
+    if(isEmpty()) {
+        std::cerr << "Can not delete an item from an empty list" << std::endl;
+        exit(1);
+    }
+
+    /*
+    Case 2: What if the Item to be deleted is the first item in the linked list.
+    Then all we need to do is move pointers.
+    If I just create temporary pointer to the head, 
+    Move the head pointer up one,
+    Delete the temp pointer
+    */
+    if(item == head) {
+        Node* temp = head;
+        head = head->next;
+        delete temp;
+        std::cout << "The item was the first item in the list, and it has been deleted!" << std::endl;
+        return;
+    } else {
+
+    /*
+    Case 3: The Item we are looking for is in the list
+    Create a temporary pointer to traverse the LL and delete the item that we don't need
+    I will use a trailing pointer that will allow the linking from a->c
+    */
+        Node* temp {nullptr};
+        Node* trail {nullptr};
+        temp = head->next;
+        trail = head;
+        while(temp != NULL) {
+            if(temp == item) {
+                trail->next = temp->next; // Have the trail->next point to the correct next node
+                delete temp;
+                std::cout << "The item was in the list, and we found it and deleted it!" << std::endl;
+                return;
+            }
+            trail = trail->next;
+            temp = temp->next;
+        }
+        delete trail;
+    }
+
+    // Case 4: The Item could not be found in th elinked list.
+    std::cerr << "The item could not be found in the Linked List" << std::endl;
 }
