@@ -17,5 +17,5 @@ public:
     int getLast(); // Get data from the last item in LL
     bool findItem(const Node *item); // Search for a given item in the linked list 
     void deleteList(); // Deallocate the memory from the heap that the Linked Lists required
-    Node* thirdItem(); // Return the memory address of the third node
+    Node* nthItem(int count); // Return the memory address of the third node
 };

@@ -75,9 +75,8 @@ int LinkedList::getLast() {
     }
 }
 
-Node* LinkedList::thirdItem() {
+Node* LinkedList::nthItem(int count) {
     Node* ptr;
-    int count = 3;
     while(count != 0) {  
         count--;
   

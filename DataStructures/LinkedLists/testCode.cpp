@@ -36,7 +36,7 @@ int testCode() {
     listt.buildItForward();
     std::cout << listt.isEmpty() << std::endl; // Should output 0
 
-    Node* item = listt.thirdItem();
+    Node* item = listt.nthItem(5);
     std::cout << listt.findItem(item) << std::endl; // Should output 1
 
     listt.deleteList(); // Should output 5 node destructors
