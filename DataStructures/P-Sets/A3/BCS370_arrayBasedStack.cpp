@@ -14,7 +14,7 @@ farmingdale::stack::stack()
 {
 //	countOfItems = 0; // almost equivalent
 	// Ask the system to allocate storage
-	data = new std::string[INITIAL_STACK_SIZE];
+	data = new std::string[currentStackSize];
 }
 // only a stub. Not written
 farmingdale::stack::stack(const stack& copyMe) 
