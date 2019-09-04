@@ -14,24 +14,27 @@
 #include <regex>
 #include "BCS370_arrayBasedStack.h"
 
-
-
 //using  farmingdale::FAILURE;
 //using  farmingdale::SUCCESS;
 //using  farmingdale::stack;
-
-
 
 bool normalTest();
 bool copyCtorTest();
 void testStack();
 void doSomething(std::string s);
 
+void myMemoryPlayFunction() {
+	int* p = new int;
+	std::cout << "Give an int room ";
+	std::cin >> *p;
+	std::cout << *p;
+}
+
 int main() {
 	bool failed = false;
 	failed = normalTest();
 	if (!failed) {
-		// copyCtorTest();
+		copyCtorTest();
 	}
 	if (false == failed) {
 		std::cout << "Passed the [non-exhaustive] test." << std::endl;
@@ -122,13 +125,10 @@ void doSomething(std::string s) {
 	} else if("E" == s) {
 		std::cout << "This was an E" << std::endl;
 	} else if ("P" == s) {
-		std::cout << "This was a P" << std::endl;
+		std::cout << "This was a P" << std::endl; // Peak the stack
 	} else if("S" == s) {
 		std::cout << "This was an S" << std::endl;
 	} else {
-		std::cout << "This was an A" << std::endl;
-		std::regex clean("([A ])");
-		std::regex_replace(std::ostreambuf_iterator<char>(std::cout),
-                      s.begin(), s.end(), clean, "");
+		std::cout << s.substr(2, 100) << std::endl;
 	}
 }
