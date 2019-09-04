@@ -17,7 +17,7 @@ LinkedList::~LinkedList() {
 
 // Returns true if the LinkedLIst isEmpty Returns False if the LL is not empty
 bool LinkedList::isEmpty() {
-    return (NULL == head && NULL == tail ? true : false);
+    return (NULL == head ? true : false);
 }
 
 // Method to Build the Linked List with user input data
@@ -156,7 +156,6 @@ void LinkedList::deleteItem(const Node* item) {
         while(temp != NULL) {
             if(temp == item) {
                 trail->next = temp->next; // Have the trail->next point to the correct next node
-                delete temp;
                 length--;
                 std::cout << "The item was in the list, and we found it and deleted it!" << std::endl;
                 return;
@@ -164,10 +163,9 @@ void LinkedList::deleteItem(const Node* item) {
             trail = trail->next;
             temp = temp->next;
         }
-        delete trail;
     }
 
-    // Case 4: The Item could not be found in thenlinked list.
+    // Case 4: The Item could not be found in the linked list.
     std::cerr << "The item could not be found in the Linked List" << std::endl;
 }
 
@@ -180,5 +178,4 @@ void LinkedList::insertFirst(int data) {
     head = new Node(data);
     head->next = temp;
     length++;
-    // How do I free up this temporary pointer?
 }
