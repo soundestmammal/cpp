@@ -118,17 +118,18 @@ void testStack() {
 }
 
 void doSomething(std::string s) {
-	if("C" == s) {
+	if('C' == s[0]) {
 		std::cout << "This was a C" << std::endl;
 	} else if('D' == s[0]) {
 		std::cout << "This was a D" << std::endl;
-	} else if("E" == s) {
+	} else if('E' == s[0]) {
 		std::cout << "This was an E" << std::endl;
-	} else if ("P" == s) {
+	} else if ('P' == s[0]) {
 		std::cout << "This was a P" << std::endl; // Peak the stack
-	} else if("S" == s) {
+	} else if('S' == s[0]) {
 		std::cout << "This was an S" << std::endl;
 	} else {
+		// This is when A is the thing... We want to push the numerical value onto the stack
 		std::cout << s.substr(2, 100) << std::endl;
 	}
 }
