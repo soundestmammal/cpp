@@ -58,7 +58,7 @@ int testCode() {
     aList.traverse();
 
     /* ************************************************************************************** */
-
+    // Insert first is working according to this case...
     LinkedList last;
     last.build(4);
     last.traverse();
