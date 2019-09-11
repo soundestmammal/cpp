@@ -7,6 +7,7 @@
 // We will add dynamic arrays (for unlimited size), templates (to allow multiple types) etc.
 
 #include <string>
+#include <iostream>
 #include "BCS370_arrayBasedStack.h"
 farmingdale::stack::stack() 
 	:
@@ -61,7 +62,31 @@ farmingdale::statusCode farmingdale::stack::push(std::string addMe) {
 	*/
 
 	if (isFull()) {
-		return FAILURE;
+		// get an array that is twice as large (if I can't get one, return FAILURE)
+		std::string *temp;
+		int newSize = 2 * currentStackSize;
+		try {
+			temp = new std::string[newSize];
+		} catch(std::bad_alloc & ba) {
+			std::cerr << "Allocation failed with error: " << ba.what() << std::endl;
+			return FAILURE;
+		}
+
+		// move (copy) the stuff into the new truck
+		for (int i = 0; i < currentStackSize; i++) {
+			*(temp + i) = *(data + i);
+		}
+
+		// Free up the block of memory the previous array occupied on the heap
+		delete[] data;
+
+		// Update the size of our array
+		currentStackSize = newSize;
+
+		// Have data point to the bigger array.
+		data = temp;
+
+		// return FAILURE;
 	}
 	data[countOfItems] = addMe;
 	++countOfItems;

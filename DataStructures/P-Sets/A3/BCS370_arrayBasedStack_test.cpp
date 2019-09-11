@@ -18,7 +18,7 @@
 //using  farmingdale::SUCCESS;
 //using  farmingdale::stack;
 
-bool normalTest();
+bool normalTest(int testsize);
 bool copyCtorTest();
 void testStack();
 void doSomething(std::string s);
@@ -32,7 +32,7 @@ void myMemoryPlayFunction() {
 
 int main() {
 	bool failed = false;
-	failed = normalTest();
+	failed = normalTest(50000);
 	if (!failed) {
 		copyCtorTest();
 	}
@@ -48,23 +48,23 @@ int main() {
 	return 0;
 }
 
-bool normalTest() {
+bool normalTest(int testsize) {
 	farmingdale::stack s1;
-	for (int i = 0; i < s1.stackCapacity(); ++i) {
+	for (int i = 0; i < testsize; ++i) {
 		if (farmingdale::FAILURE == s1.push(std::to_string(i + 1000))) {
 			std::cerr << "Error on line " << __LINE__ << std::endl;
 			return true;
 		}
 	}
-	if (farmingdale::SUCCESS == s1.push(std::to_string(s1.stackCapacity() + 1000))) {
+	if (farmingdale::SUCCESS == s1.push(std::to_string(testsize + 1000))) {
 		std::cerr << "Error on line " << __LINE__ << std::endl;
 		return true;
 	}
 	std::string j;
 	std::string t;
-	for (int i = 0; i < s1.stackCapacity(); ++i) {
+	for (int i = 0; i < testsize; ++i) {
 		if (farmingdale::FAILURE == s1.peek(t) || farmingdale::FAILURE == s1.pop(j) ||
-			t != j || j != std::to_string(1000 + s1.stackCapacity() - i - 1)) {
+			t != j || j != std::to_string(1000 + testsize - i - 1)) {
 			std::cerr << "Error on line " << __LINE__ << " j is " << j << " and i is " << i
 				<< " and t is " << t << std::endl;
 			return true;
