@@ -8,19 +8,20 @@
 using namespace std;
 
 // Function Prototype
-int generateZeroToFive();
-int generateMinMax();
-void randomStream();
-void randomStream(string filename, int length);
+int generateZeroToFive(random_device &seed);
+int generateMinMax( random_device &seed);
+void userInput(random_device &seed);
+void randomStream(string filename, int length,  random_device &seed);
 
 int main() {
+    random_device rd;
 
-    randomStream();
+    userInput(rd);
 
     return 0;
 }
 
-void randomStream() {
+void userInput(random_device &seed) {
     string f;
     int l;
     cout << "Enter a file name: ";
@@ -28,13 +29,13 @@ void randomStream() {
     cout << "Enter a length:  ";
     cin >> l;
     if (l <= 0 || f == "") {
-        cout << "This is a problem!" << endl;
+        cerr << "This is a problem at line " << __LINE__ << endl;
         exit(1);
     }
-    randomStream(f, l);
+    randomStream(f, l, seed);
 }
 
-void randomStream(string filename, int length) {
+void randomStream(string filename, int length,  random_device &seed) {
 
     int randZeroToFive;
     ofstream output;
@@ -42,11 +43,11 @@ void randomStream(string filename, int length) {
 
     for (int i = 0; i < length; i++) {
 
-        randZeroToFive = generateZeroToFive();
+        randZeroToFive = generateZeroToFive(seed);
 
         switch(randZeroToFive) {
             case 0:
-                output << "A" << " " << generateMinMax() << endl;
+                output << "A" << " " << generateMinMax(seed) << endl;
                 break;
             case 1:
                 output << "D" << endl;
@@ -71,19 +72,19 @@ void randomStream(string filename, int length) {
     }
     output.close();
 
-
 }
 
-int generateZeroToFive() {
-    random_device rd;
-    mt19937 gen(rd());
-    uniform_int_distribution<> dis(0, 5);
+int generateZeroToFive(random_device &seed) {
+    // random_device rd;  // seeding a random number rd
+    // Create an object called gen of type mersenne twister engine
+    // The constructor accepts a seed or a seed sequence
+    mt19937 gen(seed());  
+    uniform_int_distribution<> dis(0, 5); // set bounds of dist
     return dis(gen);
 }
 
-int generateMinMax() {
-    random_device rd;
-    mt19937 gen(rd());
+int generateMinMax( random_device &seed) {
+    mt19937 gen(seed());
     uniform_int_distribution<> dis(INT_MIN, INT_MAX);
     return dis(gen);
 }
