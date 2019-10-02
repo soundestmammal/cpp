@@ -33,9 +33,9 @@ public:
 
 
 	status addToFront(std::string);
-	status removeBack();
+	status removeBack(std::string &returnMe);
 	status addToBack(std::string);
-	status removeFront();
+	status removeFront(std::string &returnMe);
 	Node*search(std::string);
 	Node*getByPostion(int);
 	status getFront(std::string &);

@@ -1,6 +1,5 @@
 // (c) 2019 David Gerstl, all rights reserved
 
-
 #include <iostream>
 #include <random>
 #include <deque>
@@ -9,9 +8,8 @@
 
 bool testOne();
 
-
 int main() {
-	char x;
+	int x;
 	bool failedSoFar = false;
 	failedSoFar = testOne();
 	if (failedSoFar) {

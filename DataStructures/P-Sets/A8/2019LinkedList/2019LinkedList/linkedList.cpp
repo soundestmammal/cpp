@@ -32,7 +32,7 @@ farmingdale::status farmingdale::LinkedList::addToFront(std::string addMe) {
 }
 
 // removeback
-farmingdale::status farmingdale::LinkedList::removeBack() {
+farmingdale::status farmingdale::LinkedList::removeBack(std::string &returnMe) {
 
     // So the tail points to the back
 
@@ -72,15 +72,39 @@ farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
 }
 
 // removeFront
-farmingdale::status farmingdale
+farmingdale::status farmingdale::LinkedList::removeFront(std::string &returnMe) {
+    // Check that the linked list is not empty ?
+    Node* temp = head->next;
+    delete head;
+    head = temp;
+    return SUCCESS;
+}
 
 // search
+
+
 
 // getByPosition
 
 // getFront
+farmingdale::status farmingdale::LinkedList::getFront(std::string &returnMe) {
+    // If it is NONempty Return DATA
+    if(!isEmpty()) {
+        returnMe = head->data;
+        return SUCCESS;
+    }
+    return FAILURE;
+}
 
 // getBack
+farmingdale::status farmingdale::LinkedList::getBack(std::string &returnMe) {
+    if(isEmpty()) {
+        returnMe = tail->data;
+        return SUCCESS;
+    }
+    return FAILURE;
+}
+
 
 
 
