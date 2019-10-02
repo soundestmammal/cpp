@@ -21,6 +21,7 @@ public:
     void deleteItem(const Node* item); // Given an item, delete the item from the list
     void initializeList(); // Reset the Linked List to an empty state
     void insertFirst(int data);
+    void removeAtTail();
 };
 
 /*

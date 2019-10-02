@@ -60,6 +60,8 @@ void LinkedList::traverse() {
         currentNode = currentNode->next;
     }
     // Do I need to free up that pointer? Delete the pointer variable but not the object it points to.. hm
+    // No I don't need to because I don't call new.
+    // It is created on the stack. 
 }
 
 int LinkedList::getLength() { return length; }
@@ -178,4 +180,17 @@ void LinkedList::insertFirst(int data) {
     head = new Node(data);
     head->next = temp;
     length++;
+}
+
+void LinkedList::removeAtTail() {
+    Node* temp;
+    while(temp != NULL) {
+        if(temp->next->next == NULL) {
+            delete tail;
+            temp->next = NULL;
+            tail = temp;
+        }
+        temp = temp->next;
+    }
+
 }
