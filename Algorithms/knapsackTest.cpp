@@ -1,7 +1,4 @@
-
 // (c) 2018 David Gerstl, all rights reserved
-
-
 #include <iostream> 
 #include "knapsack.h"
 
@@ -26,8 +23,8 @@ int main() {
 	if (FAILURE == (t4stat = test4())) {
 		std::cerr << "Test 4 failed. Line: " << __LINE__ << std::endl;
 	}
-	if (SUCCESS == t1stat && SUCCESS == t2stat ||
-		SUCCESS == t3stat && SUCCESS == t4stat) {
+	if (((SUCCESS == t1stat) && (SUCCESS == t2stat)) ||
+		((SUCCESS == t3stat) && (SUCCESS == t4stat))) {
 		std::cout << "All tests passed" << std::endl;
 	} else {
 		system("pause");
@@ -48,7 +45,7 @@ status test1() {
 	int configsChecked;
 
 	std::vector<bool> result = sack.knapsackSolve(50, totalValue, configsChecked);
-	std::cerr << "Total1 is " << totalValue << std::endl;
+	std::cerr << "Total 1 is " << totalValue << std::endl;
 	std::cerr << configsChecked << " different configurations were checked of the possible " << (2<<(result.size()-1)) << " configurations" << std::endl;
 	sack.print(result);
 	if (220 == totalValue) {
@@ -72,7 +69,7 @@ status test2() {
 	int configsChecked;
 
 	std::vector<bool> result = sack.knapsackSolve(15, totalValue, configsChecked);
-	std::cerr << "Total2 is " << totalValue << std::endl;
+	std::cerr << "Total 2 is " << totalValue << std::endl;
 	std::cerr << configsChecked << " different configurations were checked of the possible " << (2 << (result.size() - 1)) << " configurations" << std::endl;
 	sack.print(result);
 	if (38 == totalValue) {
@@ -99,7 +96,7 @@ status test3() {
 	int configsChecked;
 
 	std::vector<bool> result = sack.knapsackSolve(127, totalValue, configsChecked);
-	std::cerr << "Total3 is " << totalValue << std::endl;
+	std::cerr << "Total 3 is " << totalValue << std::endl;
 	std::cerr << configsChecked << " different configurations were checked of the possible " << (2 << (result.size() - 1)) << " configurations" << std::endl;
 	sack.print(result);
 	if (266 == totalValue) {
@@ -125,7 +122,7 @@ status test4() {
 	int configsChecked;
 
 	std::vector<bool> result = sack.knapsackSolve(70, totalValue, configsChecked);
-	std::cerr << "Total3 is " << totalValue << std::endl;
+	std::cerr << "Total 4 is " << totalValue << std::endl;
 	std::cerr << configsChecked << " different configurations were checked of the possible " << (2 << (result.size() - 1)) << " configurations" << std::endl;
 	sack.print(result);
 	if (160 == totalValue) {

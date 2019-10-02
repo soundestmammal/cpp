@@ -26,5 +26,4 @@ public:
 	void print(std::vector<bool> included = std::vector<bool>());
 };
 
-
 #endif // H_KNAPSACK
