@@ -13,7 +13,9 @@ namespace farmingdale {
 }
 
 // a node of my ll
-struct farmingdale::Node {
+class farmingdale::Node {
+public:
+	Node(std::string s) { data = s; }
 	std::string data;
 	Node* next;
 };
@@ -31,9 +33,9 @@ public:
 
 
 	status addToFront(std::string);
-	status removeBack(std::string &);
+	status removeBack();
 	status addToBack(std::string);
-	status removeFront(std::string &);
+	status removeFront();
 	Node*search(std::string);
 	Node*getByPostion(int);
 	status getFront(std::string &);
