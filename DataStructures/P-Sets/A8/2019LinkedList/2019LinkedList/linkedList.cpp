@@ -57,8 +57,22 @@ farmingdale::status farmingdale::LinkedList::removeBack() {
 }
 
 // addToBack
+farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
+    // I need a temp pointer
+    Node* temp = tail;
+
+    try {
+        temp->next = new Node(addMe);
+    } catch (std::bad_alloc &ba) {
+        ba.what();
+        return FAILURE;
+    }
+    tail = temp->next;
+    return SUCCESS;
+}
 
 // removeFront
+farmingdale::status farmingdale
 
 // search
 
