@@ -1,6 +1,5 @@
 // (c) 2019 David Gerstl, all rights reserved
 
-
 #ifndef H_LINKEDLIST
 #define H_LINKEDLIST
 
@@ -31,25 +30,22 @@ public:
 	// not a reference parameter because we use copy/swap
 	const LinkedList & operator=(LinkedList);
 
-
-	status addToFront(std::string);
-	status removeBack(std::string &returnMe);
-	status addToBack(std::string);
-	status removeFront(std::string &returnMe);
-	Node*search(std::string);
-	Node*getByPostion(int);
-	status getFront(std::string &);
-	status getBack(std::string &);
-
-
+	status addToFront(std::string); // done
+	status removeBack(std::string &returnMe); // done
+	status addToBack(std::string); // done
+	status removeFront(std::string &returnMe); // done
+	Node*search(std::string); // done
+	Node*getByPostion(int); // done
+	status getFront(std::string &); // done
+	status getBack(std::string &); // done
 
 	// this can be done inline easily
 	inline bool isEmpty() { return (NULL == head); };
 	inline bool contains(std::string findMe) { return (0 != search(findMe)); };
-	status insertAfter(Node*, std::string);
-	// status removeAfter(Node*);
+	status insertAfter(Node*, std::string); // done
+	status removeAfter(Node*); // done
 	// O(N) because we need to traverse
-	status remove(Node*);
+	status remove(Node*); // done
 	inline status remove(std::string removeMe) {
 		Node* nodeToRemove = search(removeMe);
 		//		return (remove(nodeToRemove));
