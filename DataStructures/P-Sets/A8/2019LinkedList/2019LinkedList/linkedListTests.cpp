@@ -6,16 +6,44 @@
 #include <limits>
 #include "linkedList.h"
 
-bool testOne();
+// bool testOne();
 
 int main() {
 	int x;
-	bool failedSoFar = false;
-	failedSoFar = testOne();
-	if (failedSoFar) {
-		std::cout << "Failed test on line " << __LINE__ << std::endl;
+	farmingdale::LinkedList ll;
+	farmingdale::status flag = ll.addToFront("This is a string");
+	if(farmingdale::SUCCESS != flag) {
+		std::cerr << "There is a problem on line " << __LINE__ << std::endl;
 		exit(1);
 	}
+	ll.addToFront("Here is a string");
+	ll.addToFront("Why is this a string");
+	ll.addToFront("Number 4");
+	ll.addToFront("Number 5");
+	ll.addToFront("Number 6");
+
+	std::string s1, s2, s3, s4, s5, s6, s7, s8, s9, s10;
+
+	 flag = ll.removeFront(s1);
+	 flag = ll.removeFront(s2);
+	 flag = ll.removeFront(s3);
+	 flag = ll.removeFront(s4);
+	 flag = ll.removeFront(s5);
+	 flag = ll.removeFront(s6);
+
+	// std::cout << s1 << std::endl;
+	// std::cout << s2 << std::endl;
+	// std::cout << s3 << std::endl;
+	// std::cout << s4 << std::endl;
+	// std::cout << s5 << std::endl;
+	// std::cout << s6 << std::endl;
+
+	// bool failedSoFar = false;
+	// failedSoFar = testOne();
+	// if (failedSoFar) {
+	// 	std::cout << "Failed test on line " << __LINE__ << std::endl;
+	// 	exit(1);
+	// }
 
 	// more portable than system("pause")
 	std::cin >> x;

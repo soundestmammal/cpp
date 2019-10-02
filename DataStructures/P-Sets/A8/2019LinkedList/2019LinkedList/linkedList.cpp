@@ -21,16 +21,16 @@ farmingdale::LinkedList::~LinkedList() {
 // addToFront
 farmingdale::status farmingdale::LinkedList::addToFront(std::string addMe) {
     // temp pointer to head
-    // Node* temp = head;
-    // // head points to addMe!
-    // try {
-    //     head = new Node(addMe);
-    // } catch(std::bad_alloc &ba) {
-    //     ba.what();
-    //     return FAILURE;
-    // }
-    //     // head next points to the temp pointer
-    //     head->next = temp;
+    Node* temp = head;
+    // head points to addMe!
+    try {
+        head = new Node(addMe);
+    } catch(std::bad_alloc &ba) {
+        ba.what();
+        return FAILURE;
+    }
+        // head next points to the temp pointer
+        head->next = temp;
 
     return SUCCESS;
 }
@@ -57,7 +57,6 @@ farmingdale::status farmingdale::LinkedList::removeBack(std::string &returnMe) {
     // delete nm1;
 
     return SUCCESS;
-
 }
 
 // addToBack
@@ -78,9 +77,13 @@ farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
 // removeFront
 farmingdale::status farmingdale::LinkedList::removeFront(std::string &returnMe) {
     // Check that the linked list is not empty ?
-    // Node* temp = head->next;
-    // delete head;
-    // head = temp;
+    if(isEmpty()) {
+        return FAILURE;
+    }
+    Node* temp = head->next;
+    returnMe = head->data;
+    delete head;
+    head = temp;
     return SUCCESS;
 }
 
