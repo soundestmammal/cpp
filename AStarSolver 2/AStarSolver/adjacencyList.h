@@ -11,18 +11,23 @@ namespace farmingdale {
 // define an && operation on status (see the test file for use)
 farmingdale::status operator&&(farmingdale::status originalA, farmingdale::status originalB);
 
+
 struct farmingdale::adjLink {
 	int connectsToNode;
 	double weight;
     adjLink *next;
+	double calcCost; // This will be the list[connectsToNode].distanceFromSource + this.weight;
 };
+
+
 
 struct farmingdale::adjNode {
 	int xCoord;
 	int yCoord;
 	// unused, except in traversal or A*
-	int parent;
+	int parent = -1;
 	adjLink *edges;
+	double distanceFromSource = 0;
 };
 
 // directed graph adj list structure for GPS routing (A*) code
