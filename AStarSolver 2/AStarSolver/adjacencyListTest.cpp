@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "adjacencyList.h"
+#include <cfloat>
 int testOne();
 int main() {
 	int status = testOne();
@@ -65,8 +66,13 @@ int testOne() {
 		std::cerr << "Error computing A* on line " << __LINE__ << std::endl;
 		return 1;
 	}
+
+
+
+
 	std::cout << "There are " << length << " links in the shortest path from (20,60) to (60,20). They are:" << std::endl;
 	double distance = 0.0;
+
 	for (int i = 1; i < length; ++i) {
 		int fX, fY, tX, tY;
 		theGraph.getXY(list[i - 1], fX, fY);
@@ -75,8 +81,10 @@ int testOne() {
 		std::cout << "\t\t distance is " << theGraph.distance(list[i - 1], list[i]) << std::endl; 
 		distance += theGraph.distance(list[i - 1], list[i]);
 	}
+
 	std::cout << "\ttotal distance is " << distance << std::endl;
 	int soln[] = { 0,7,6,5,4 };
+
 	for (int i = 0; i < length; ++i) {
 		if (soln[i] != list[i]) {
 			int fX, fY, tX, tY;
@@ -87,5 +95,6 @@ int testOne() {
 			return 1;
 		}
 	}
+	
 	return 0;
 }
