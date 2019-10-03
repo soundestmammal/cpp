@@ -3,6 +3,8 @@
 #include "adjacencyList.h"
 #include <iostream>
 #include <limits>
+#include <cmath>
+#include <cfloat>
 
 farmingdale::adjacencyList::adjacencyList(int numberOfNodes)
     : size(numberOfNodes) {
@@ -21,6 +23,7 @@ farmingdale::status farmingdale::adjacencyList::addEdge(int fromNode, int toNode
   } catch (std::bad_alloc) {
     return FAILURE;
   }
+  // out link connects
   newLink->connectsToNode = toNode;
   newLink->weight = weight;
   newLink->next = list[fromNode].edges;
@@ -56,13 +59,13 @@ inline double square(int i) { return double(i * i); }
 // Euclidean distance of two nodes in embedded graph
 double farmingdale::adjacencyList::slDistance(int fromNode, int toNode) {
   if (fromNode >= size || toNode >= size) {
-    return ;
+    return 99999.9;
   }
   int x1 = list[fromNode].xCoord;
   int x2 = list[toNode].xCoord;
   int y1 = list[fromNode].yCoord;
   int y2 = list[toNode].yCoord;
-  double dist = (square(x2 - x1) + square(y2 - y1));
+  double dist = sqrt(square(x2 - x1) + square(y2 - y1));
   return (dist);
 }
 
