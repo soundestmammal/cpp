@@ -1,5 +1,6 @@
 // (c) 2019 David Gerstl, all rights reserved
 #include "linkedList.h"
+#include <iostream>
 
 // Default Constructor
 farmingdale::LinkedList::LinkedList() 
@@ -13,10 +14,6 @@ farmingdale::LinkedList::LinkedList()
 farmingdale::LinkedList::~LinkedList() {
     deleteList();
 }
-
-
-
-
 
 // addToFront
 farmingdale::status farmingdale::LinkedList::addToFront(std::string addMe) {
