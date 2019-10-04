@@ -6,7 +6,7 @@
 #include <string>
 
 namespace farmingdale {
-	struct Node;
+	class Node;
 	class LinkedList;
 	enum status { FAILURE, SUCCESS };
 }
@@ -14,7 +14,7 @@ namespace farmingdale {
 // a node of my ll
 class farmingdale::Node {
 public:
-	Node(std::string s) { data = s; }
+	// Need a default ctor
 	std::string data;
 	Node* next;
 };
@@ -31,11 +31,13 @@ public:
 	const LinkedList & operator=(LinkedList);
 
 	status addToFront(std::string); // done
-	status removeBack(std::string &returnMe); // done
+	status removeBack(); // done
 	status addToBack(std::string); // done
-	status removeFront(std::string &returnMe); // done
-	Node*search(std::string); // done
-	Node*getByPostion(int); // done
+	status removeFront(); // done
+
+	Node* search(std::string); // done
+	Node* getByPostion(int); // done
+
 	status getFront(std::string &); // done
 	status getBack(std::string &); // done
 
