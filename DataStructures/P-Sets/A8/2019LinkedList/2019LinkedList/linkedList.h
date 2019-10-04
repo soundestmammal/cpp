@@ -36,7 +36,7 @@ public:
 	status removeFront(); // done
 
 	Node* search(std::string); // done
-	Node* getByPostion(int); // done
+	Node* getByPosition(int); // done
 
 	status getFront(std::string &); // done
 	status getBack(std::string &); // done

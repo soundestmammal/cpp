@@ -127,7 +127,7 @@ farmingdale::Node* farmingdale::LinkedList::search(std::string findMe) {
 }
 
 // getByPosition
-farmingdale::Node * farmingdale::LinkedList::getByPostion(int position) {
+farmingdale::Node * farmingdale::LinkedList::getByPosition(int position) {
 //     Node* temp = head;
 //     int count = 0;
 //     while(temp != NULL && count < position) {
