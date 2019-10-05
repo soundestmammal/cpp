@@ -51,6 +51,7 @@ farmingdale::status farmingdale::LinkedList::removeBack() {
         delete head;
         head = NULL;
         tail = NULL;
+        return SUCCESS;
     }
 
     Node* nm1 = head;
@@ -76,6 +77,7 @@ farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
         head->data = addMe;
         head->next = NULL;
         tail = head;
+        return SUCCESS;
     }
     // I need a temp pointer
     Node* temp = new Node;
@@ -128,16 +130,25 @@ farmingdale::Node* farmingdale::LinkedList::search(std::string findMe) {
 
 // getByPosition
 farmingdale::Node * farmingdale::LinkedList::getByPosition(int position) {
-//     Node* temp = head;
-//     int count = 0;
-//     while(temp != NULL && count < position) {
-//         temp = temp->next;
-//     }
-//     return temp;
-        return head;
+    if (isEmpty()) {
+        std:: cerr << "The list is empty!!! error on line " << __LINE__ << std::endl;
+        return 0;
+    }
+    int counter = 0;
+    Node* temp = head;
+    while(temp != NULL) {
+        if (counter == position) {
+            return temp;
+        }
+        counter++;
+        temp = temp->next;
+    }
+    if (counter < position) {
+        std::cerr << "The provided position is beyond the size of the list" << std::endl;
+        return 0;
+    }
+    return 0;
 }
-
-
 // getFront
 farmingdale::status farmingdale::LinkedList::getFront(std::string &returnMe) {
     // If it is NONempty Return DATA
@@ -158,6 +169,16 @@ farmingdale::status farmingdale::LinkedList::getBack(std::string &returnMe) {
 }
 
 farmingdale::status farmingdale::LinkedList::insertAfter(Node* afterMe, std::string addMe) {
+    /*
+    Insert after head
+    Insert after a middle node
+    Insert at the end;
+    */
+
+    // Ok so I am given a node that I need to remove the afterMe->next
+    Node* temp = new Node;
+    temp->data = addMe;
+
     return FAILURE;
 }
 
@@ -166,6 +187,19 @@ farmingdale::status farmingdale::LinkedList::removeAfter(Node* afterMe) {
 }
 
 farmingdale::status farmingdale::LinkedList::remove(Node* removeMe) {
+    Node* temp = head;
+    bool flag = true;
+    while(flag) {
+        if(temp->next == removeMe) {
+            temp->next = removeMe->next;
+            delete removeMe;
+            return SUCCESS;
+        } else if (temp == NULL) {
+            flag = false;
+            return FAILURE;
+        }
+        temp = temp->next;
+    }
     return FAILURE;
 }
 
