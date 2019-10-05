@@ -143,6 +143,7 @@ farmingdale::Node * farmingdale::LinkedList::getByPosition(int position) {
         counter++;
         temp = temp->next;
     }
+    std::cerr << "This should not run it is on line " << __LINE__ << std::endl;
     if (counter < position) {
         std::cerr << "The provided position is beyond the size of the list" << std::endl;
         return 0;
@@ -164,7 +165,7 @@ farmingdale::status farmingdale::LinkedList::getBack(std::string &returnMe) {
     if(!isEmpty()) {
         returnMe = tail->data;
         return SUCCESS;
-    }
+    } 
     return FAILURE;
 }
 
@@ -178,6 +179,9 @@ farmingdale::status farmingdale::LinkedList::insertAfter(Node* afterMe, std::str
     // Ok so I am given a node that I need to remove the afterMe->next
     Node* temp = new Node;
     temp->data = addMe;
+    temp->next = afterMe->next;
+    afterMe->next = temp;
+    return SUCCESS;
 
     return FAILURE;
 }
