@@ -51,17 +51,17 @@ bool testOne() {
 		case 2:
 			std::cout << "It ran case 2" << std::endl;
 			// add at middle (after nth item)
-		{
-			std::uniform_int_distribution<> posnDis(0, testDeque.size() - 1);
-			position = posnDis(gen);
-			// note that deque insert makes your item the new X, so inserts before. We insert after
-			std::deque<std::string>::iterator insertAfter = testDeque.begin() + (position);
-			farmingdale::Node * nodeAfter = myLL.getByPosition(position);
-			std::cout << "Adding after our node " << nodeAfter->data << " which stl shows as " << *insertAfter << std::endl;
-			++insertAfter;
-			testDeque.insert(insertAfter, num);
-			myLL.insertAfter(nodeAfter, num);
-		}
+		// {
+		// 	std::uniform_int_distribution<> posnDis(0, testDeque.size() - 1);
+		// 	position = posnDis(gen);
+		// 	// note that deque insert makes your item the new X, so inserts before. We insert after
+		// 	std::deque<std::string>::iterator insertAfter = testDeque.begin() + (position);
+		// 	farmingdale::Node * nodeAfter = myLL.getByPosition(position);
+		// 	std::cout << "Adding after our node " << nodeAfter->data << " which stl shows as " << *insertAfter << std::endl;
+		// 	++insertAfter;
+		// 	testDeque.insert(insertAfter, num);
+		// 	myLL.insertAfter(nodeAfter, num);
+		// }
 		break;
 		case 3:
 			std::cout << "It ran case 3" << std::endl;
