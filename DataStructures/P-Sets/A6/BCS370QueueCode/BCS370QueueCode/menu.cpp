@@ -120,7 +120,7 @@ bool testStream(std::string f) {
         std::cout << lineNumber;
 		// std::cout << "LOOK TO HERE TO SEE WHAT THE CONTENTS OF THE LINE WERE!!!     " << item << std::endl;
 
-	    if('C' == item[0]) {
+	    if ('C' == item[0]) {
 		    std::cout << "\tNOTHING: This was a C";
 	    } 
 
