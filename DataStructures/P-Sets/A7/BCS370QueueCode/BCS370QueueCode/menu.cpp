@@ -138,10 +138,6 @@ bool testStream(std::string f) {
     farmingdale::queueWrapper q2;
     farmingdale::queue q3;
 
-    // Which file would you like to read?
-	// std::cout << "What is the name of the file?  ";
-	// std::cin >> f;
-
     // Create an fstream object and try and open
 	std::fstream file;
 	file.open(f);
@@ -206,9 +202,6 @@ bool testStream(std::string f) {
             }
         } 
         
-        
-      
-        
         /*
             E is for isEmpty().
 
@@ -219,9 +212,6 @@ bool testStream(std::string f) {
                 1. All true
                 2. All false
         */
-        
-        
-        
         
         else if('E' == item[0]) {
                 if(q1.isEmpty()) {

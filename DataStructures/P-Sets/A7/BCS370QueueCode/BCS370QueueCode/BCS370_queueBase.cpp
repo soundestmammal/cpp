@@ -46,8 +46,6 @@ farmingdale::queue::queue(const queue& copyMe)
 	}
 }
 
-
-// THIS IS NOT CIRCULAR DUDE
 farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 	// if full, return FAILURE
 	if (isFull()) {
@@ -116,3 +114,8 @@ farmingdale::statusCode farmingdale::queue::peek(std::string &returnedElement) c
 	// return SUCCESS
 	return SUCCESS;
 }
+
+
+/*
+	Uncomment 71&72 The Counter and eye
+*/
