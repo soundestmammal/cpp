@@ -6,112 +6,113 @@
 #include <random>
 #include <queue>
 #include "BCS370_queueBase.h"
+#include "linkedList.h"
+#include "queueWrapper.h"
+#include "llqueue.h"
 
 // Function Prototype
 int generateZeroToThree(std::random_device &seed);
 int generateMinMax(std::random_device &seed);
-void userInput(std::random_device &seed);
+void userInput(std::random_device &seed, std::string &f);
 void randomStream(std::string filename, int length,  std::random_device &seed);
 bool testStream(std::string f);
 
-class farmingdale::queueWrapper {
-public:
-    std::queue<std::string> stlQueue;
-    bool isEmpty();
-    farmingdale::statusCode enqueue(std::string s);
-    farmingdale::statusCode dequeue(std::string &returnElement);
-    farmingdale::statusCode peek(std::string &returnElement);
-};
+// class farmingdale::queueWrapper {
+// public:
+//     std::queue<std::string> stlQueue;
+//     bool isEmpty();
+//     farmingdale::statusCode enqueue(std::string s);
+//     farmingdale::statusCode dequeue(std::string &returnElement);
+//     farmingdale::statusCode peek(std::string &returnElement);
+// };
 
 
-// I need to make a node over here
-class farmingdale::Node {
-public:
-	// Need a default ctor
-	std::string data;
-	Node* next;
-};
+// // I need to make a node over here
+// class farmingdale::Node {
+// public:
+// 	// Need a default ctor
+// 	std::string data;
+// 	Node* next;
+// };
 
-// I need to put the Linked List over here!
-class farmingdale::LinkedList {
-public:
-	Node* head; // first node
-	Node* tail; // last node
-	statusCode addToFront(std::string); // done
-	statusCode removeBack(); // done
-	statusCode addToBack(std::string); // done
-	statusCode removeFront(); // done
+// // I need to put the Linked List over here!
+// class farmingdale::LinkedList {
+// public:
+// 	Node* head; // first node
+// 	Node* tail; // last node
+// 	statusCode addToFront(std::string); // done
+// 	statusCode removeBack(); // done
+// 	statusCode addToBack(std::string); // done
+// 	statusCode removeFront(); // done
 
-	statusCode getFront(std::string &); // done
-	statusCode getBack(std::string &); // done
+// 	statusCode getFront(std::string &); // done
+// 	statusCode getBack(std::string &); // done
 
-	// this can be done inline easily
-	inline bool isEmpty() { return (NULL == head); };
-	// O(N) because we need to traverse
+// 	// this can be done inline easily
+// 	inline bool isEmpty() { return (NULL == head); };
+// 	// O(N) because we need to traverse
 	
-	// delete list items
-};
+// 	// delete list items
+// };
 
-// Put the Linked List Methods over here
+// // Put the Linked List Methods over here
 
-// Enqueue is going to be addToBack
-// addToBack
-farmingdale::statusCode farmingdale::LinkedList::addToBack(std::string addMe) {
-    if(isEmpty()){
-        head = new Node;
-        head->data = addMe;
-        head->next = NULL;
-        tail = head;
-        return SUCCESS;
-    }
-    // I need a temp pointer
-    Node* temp = new Node;
+// // Enqueue is going to be addToBack
+// // addToBack
+// farmingdale::statusCode farmingdale::LinkedList::addToBack(std::string addMe) {
+//     if(isEmpty()){
+//         head = new Node;
+//         head->data = addMe;
+//         head->next = NULL;
+//         tail = head;
+//         return SUCCESS;
+//     }
+//     // I need a temp pointer
+//     Node* temp = new Node;
 
-    // try {
-    //     temp->next = new Node;
-    // } catch (std::bad_alloc &ba) {
-    //     ba.what();
-    //     return FAILURE;
-    // }
-    temp->data = addMe;
-    temp->next = NULL;
+//     // try {
+//     //     temp->next = new Node;
+//     // } catch (std::bad_alloc &ba) {
+//     //     ba.what();
+//     //     return FAILURE;
+//     // }
+//     temp->data = addMe;
+//     temp->next = NULL;
 
-    tail->next = temp;
-    tail = temp;
+//     tail->next = temp;
+//     tail = temp;
 
-    return SUCCESS;
-}
-
-
+//     return SUCCESS;
+// }
 
 
-// Dequeue is going to be getFront and remove from front
-
-// getFront
-farmingdale::statusCode farmingdale::LinkedList::getFront(std::string &returnMe) {
-    // If it is NONempty Return DATA
-    if(!isEmpty()) {
-        returnMe = head->data;
-        return SUCCESS;
-    }
-    return FAILURE;
-}
 
 
-// removeFront
-farmingdale::statusCode farmingdale::LinkedList::removeFront() {
-    // Check that the linked list is not empty ?
-    if(isEmpty()) {
-        return FAILURE;
-    }
-    Node* temp = head->next;
-    // returnMe = head->data; not needed, it returns status, call after getFront
-    delete head;
-    head = temp;
-    return SUCCESS;
-}
+// // Dequeue is going to be getFront and remove from front
+
+// // getFront
+// farmingdale::statusCode farmingdale::LinkedList::getFront(std::string &returnMe) {
+//     // If it is NONempty Return DATA
+//     if(!isEmpty()) {
+//         returnMe = head->data;
+//         return SUCCESS;
+//     }
+//     return FAILURE;
+// }
 
 
+// // removeFront
+// farmingdale::statusCode farmingdale::LinkedList::removeFront() {
+//     // Check that the linked list is not empty ?
+//     if(isEmpty()) {
+//         return FAILURE;
+//     }
+//     Node* temp = head->next;
+//     // returnMe = head->data; not needed, it returns status, call after getFront
+//     delete head;
+//     head = temp;
+//     return SUCCESS;
+// }
 
 
 
@@ -120,85 +121,95 @@ farmingdale::statusCode farmingdale::LinkedList::removeFront() {
 
 
 
-// Make the farmingdale Linked List Queue over here.
-class farmingdale::llqueue {
-public:
-    farmingdale::LinkedList data;
 
-    // isEmpty
-    bool isEmpty();
 
-    // Enqueue
-    farmingdale::statusCode enqueue(std::string addMe);
+// // Make the farmingdale Linked List Queue over here.
+// class farmingdale::llqueue {
+// public:
+//     farmingdale::LinkedList data;
 
-    // Dequeue
-    farmingdale::statusCode dequeue(std::string &returnMe);
+//     // isEmpty
+//     bool isEmpty();
 
-    // Peek
-    farmingdale::statusCode peek(std::string &returnMe);
+//     // Enqueue
+//     farmingdale::statusCode enqueue(std::string addMe);
 
-};
+//     // Dequeue
+//     farmingdale::statusCode dequeue(std::string &returnMe);
 
-bool farmingdale::llqueue::isEmpty() {
-    if (data.isEmpty()) {
-        return true;
-    }
-    return false;
-}
+//     // Peek
+//     farmingdale::statusCode peek(std::string &returnMe);
 
-farmingdale::statusCode farmingdale::llqueue::enqueue(std::string addMe) {
-    data.addToBack(addMe);
-    return SUCCESS;
-}
+// };
 
-farmingdale::statusCode farmingdale::llqueue::dequeue(std::string &returnMe) {
-    if(isEmpty()) {
-        return FAILURE;
-    }
-    data.getFront(returnMe);
-    data.removeFront();
-    return SUCCESS;
-}
+// bool farmingdale::llqueue::isEmpty() {
+//     if (data.isEmpty()) {
+//         return true;
+//     }
+//     return false;
+// }
 
-farmingdale::statusCode farmingdale::llqueue::peek(std::string &returnMe) {
-    if(isEmpty()) {
-        return FAILURE;
-    }
-    data.getFront(returnMe);
-    return SUCCESS;
-}
+// farmingdale::statusCode farmingdale::llqueue::enqueue(std::string addMe) {
+//     data.addToBack(addMe);
+//     return SUCCESS;
+// }
 
-bool farmingdale::queueWrapper::isEmpty() {
-    if (stlQueue.empty()) {
-        return true;
-    }
-    return false;
-}
-farmingdale::statusCode farmingdale::queueWrapper::enqueue(std::string pushMe) {
-        stlQueue.push(pushMe);
-        return SUCCESS;
-}
-farmingdale::statusCode farmingdale::queueWrapper::peek(std::string &returnElement) {
-    if (isEmpty()) {
-        return FAILURE;
-    }
-    returnElement = stlQueue.front();
-    return SUCCESS;
-}
+// farmingdale::statusCode farmingdale::llqueue::dequeue(std::string &returnMe) {
+//     if(isEmpty()) {
+//         return FAILURE;
+//     }
+//     data.getFront(returnMe);
+//     data.removeFront();
+//     return SUCCESS;
+// }
 
-farmingdale::statusCode farmingdale::queueWrapper::dequeue(std::string &returnElement) {
-    std::string test;
-    if(isEmpty()) {
-        return FAILURE;
-    }
-    returnElement = stlQueue.front();
-    stlQueue.pop();
-    test = stlQueue.front();
-    if (returnElement != test) {
-        return SUCCESS;
-    }
-    return FAILURE;
-}
+// farmingdale::statusCode farmingdale::llqueue::peek(std::string &returnMe) {
+//     std::cout << "This logs here" << std::endl;
+//     std::cout << returnMe << std::endl;
+//     if(isEmpty()) {
+//         std::cout << "This should not run!";
+//         return FAILURE;
+        
+//     }
+//     std::string work;
+//     std::cout << "Work! " << work << std::endl;
+//     data.getFront(work);
+//     std::cout << "Work! " << work << std::endl;
+//     returnMe = work;
+//     return SUCCESS;
+// }
+
+// bool farmingdale::queueWrapper::isEmpty() {
+//     if (stlQueue.empty()) {
+//         return true;
+//     }
+//     return false;
+// }
+// farmingdale::statusCode farmingdale::queueWrapper::enqueue(std::string pushMe) {
+//         stlQueue.push(pushMe);
+//         return SUCCESS;
+// }
+// farmingdale::statusCode farmingdale::queueWrapper::peek(std::string &returnElement) {
+//     if (isEmpty()) {
+//         return FAILURE;
+//     }
+//     returnElement = stlQueue.front();
+//     return SUCCESS;
+// }
+
+// farmingdale::statusCode farmingdale::queueWrapper::dequeue(std::string &returnElement) {
+//     std::string test;
+//     if(isEmpty()) {
+//         return FAILURE;
+//     }
+//     returnElement = stlQueue.front();
+//     stlQueue.pop();
+//     test = stlQueue.front();
+//     if (returnElement != test) {
+//         return SUCCESS;
+//     }
+//     return FAILURE;
+// }
 
 
 int main() {
@@ -227,7 +238,8 @@ int main() {
     if(response == 1) {
         std::cout << "Exiting the Menu" << std::endl;
     } else if( response == 2) {
-        userInput(rd);
+        std::string f;
+        userInput(rd, f);
     } else if (response == 3) {
         // Run test stream on a file provided
         // Ask for the file name
@@ -238,17 +250,18 @@ int main() {
         
     } else if (response == 4) {
         // Ask for a file name
+            // std::string f;
+            // int l;
+            // std::cout << "Enter a file name: ";
+            // std::cin >> f;
+            // std::cout << "Enter a length:  ";
+            // std::cin >> l;
+            // if (l <= 0 || f == "") {
+            //     std::cout << "This is a problem!" << std::endl;
+            //     exit(1);
+            // }
             std::string f;
-            int l;
-            std::cout << "Enter a file name: ";
-            std::cin >> f;
-            std::cout << "Enter a length:  ";
-            std::cin >> l;
-            if (l <= 0 || f == "") {
-                std::cout << "This is a problem!" << std::endl;
-                exit(1);
-            }
-            userInput(rd);
+            userInput(rd, f);
             // Tell the user if it passed or failed
 
             working = testStream(f);
@@ -301,49 +314,48 @@ bool testStream(std::string f) {
 
     // Begin to Parse the file
 	while(getline (file, item)) {
+
+        // Used for displaying output during testing
         lineNumber++;
         std::cout << lineNumber;
-		// std::cout << "LOOK TO HERE TO SEE WHAT THE CONTENTS OF THE LINE WERE!!!     " << item << std::endl;
 
 	    if('C' == item[0]) {
 		    std::cout << "\tNOTHING: This was a C";
 	    } 
-
         /*
+
             D is for Dequeue!
-
-            Top/Peek - Compare all three queues.
-
-            It should only pass if all three are the same.
-
-            I need to Dequeue from all three queues.
-
-            
         */
-
         else if('D' == item[0]) {           
             
+            bool f1 = q1.isEmpty();
+            bool f2 = q2.isEmpty();
+            bool f3 = q3.isEmpty();
+
+
             // Create string variables to compare returned values
             std::string qa, qb, qc, qd, qe, qf;
             q1.peek(qc);
             q2.peek(qd);
             q3.peek(qf);
-            std::cout << std::endl;
-            std::cout << qc << std::endl;
-            std::cout << qd << std::endl;
-            std::cout << std::endl;
+            // std::cout << std::endl;
+            // std::cout << qc << std::endl;
+            // std::cout << qd << std::endl;
+            // std::cout << std::endl;
+
+            farmingdale::statusCode statTest = q2.dequeue(qb);
 
             // Check if they return failure, or if the peeked values are different.
-            if (q1.dequeue(qa) != q2.dequeue(qb) || qc != qd) {
+            if (q1.dequeue(qa) != statTest || statTest != q3.dequeue(qc) || qc != qd || qa != qb) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
                 return false;
             }
 
-            if(q1.isEmpty()) {
+            if(f1 || f2 || f3) {
                 std::cout << "\tDEQUEUE:  The Queue was empty and both returned FAILURE";
             } else {
                  // CONSOLE LOG
-                std::cout << "\tDEQUEUE:  Queue_1's top is " << qc << " queue value is " << qa << " Queue_2's top is " << qd << " dequeue value is " << qb;
+                std::cout << "\tDEQUEUE:  Q1's top is " << qc << " dq value is " << qa << " Q_2's top is " << qd << " dq value is " << qb << " Q_3's top is " << qf << " dq value is " << qc;
             }
         } 
         
@@ -353,53 +365,48 @@ bool testStream(std::string f) {
             it should call isEmpty() on all three queues. 
 
             Acceptable cases:
-
                 1. All true
                 2. All false
         */
         
         else if('E' == item[0]) {
                 if(q1.isEmpty()) {
-                    if (!q1.isEmpty() || !q2.isEmpty()) {
+                    if (!q2.isEmpty() || !q3.isEmpty()) {
                         return false;
                     }
                 } 
                 else {
-                    if(q1.isEmpty() || q2.isEmpty()) {
-                        return false;
+                    if(q1.isEmpty()) {
+                        if(q2.isEmpty() || q3.isEmpty()) {
+                            return false;                            
+                        }
                     }
                 }
-                std::cout << "\tISEMPTY: " << q1.isEmpty() << " " << q2.isEmpty();
+                std::cout << "\tISEMPTY: " << q1.isEmpty() << " " << q2.isEmpty() << " " << q3.isEmpty();
         } 
         
         /*
-
         Peek: Compare all of the peeks. 
-
         All of the strings should be the same.
-
         */
         
         
         else if ('P' == item[0]) {
-                // I need to fix this... peek is not really working...
+                // Strings to be returned by qx.peek
                 std::string c;
                 std::string d;
+                std::string e;
 
-            // std::cout << s1.peek(c) << std::endl;
-
-            if(q1.peek(c) != q2.peek(d)) {
+            if(q1.peek(c) != q2.peek(d) || q2.peek(d) != q3.peek(e)) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
                 return false;
             }
 
             q1.peek(c);
-            q2.peek(d);
-
-            std::cout << "This is the return value of q1 " << c << std::endl;
-            std::cout << "This is the return value of q2 " << d << std::endl; 
+            q2.peek(d); 
+            q3.peek(e);
             
-            if (c != d) {
+            if (c != d || d != e) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
                 return false;
             }
@@ -407,7 +414,7 @@ bool testStream(std::string f) {
             if(q1.isEmpty()) {
                 std::cout << "\tPEEK: Unable to peek an empty queue";
             } else {
-                std::cout << "\tPEEK: " << c << " " << d;
+                std::cout << "\tPEEK: " << c << " " << d << " " << e;
             }
         
 		    // std::cout << "This was a P" << std::endl; // Peak the Queue
@@ -418,38 +425,34 @@ bool testStream(std::string f) {
         
         /*
             This is where I enqueue
-
-            I should do a is full to see if they are all the same
-
             Then I should enqueue and all three should return the same status code.
-
+            After Enqueue make sure you are adding and removing from different ends
         */
         
         else {
             std::string value = item.substr(2,100);
-            if(farmingdale::FAILURE == q1.enqueue(value) || farmingdale::FAILURE == q2.enqueue(value)) {
+            if(farmingdale::FAILURE == q1.enqueue(value) || farmingdale::FAILURE == q2.enqueue(value) || farmingdale::FAILURE == q3.enqueue(value)) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
                 return false;
             }
             std::string c;
             std::string d;
+            std::string e;
 
             q1.peek(c);
             q2.peek(d);
-
+            q3.peek(e);
 
             // CONSOLE LOG
-            std::cout << "\tEnqueue: Q_1 and Q_2 both push " << value << " the top of the Queues have " << c << " " << d;
+            std::cout << "\tEnqueue: Q_1 and Q_2 and Q_3 all push " << value << " the top of the Queues have " << c << " " << d << " " << e << " ";
         }
         // FOR CONSOLE
         std::cout << "\n";
-        //std::cout << s1.QueueCapacity() << std::endl;
 	}
     return true;
 }
 
-void userInput(std::random_device &seed) {
-    std::string f;
+void userInput(std::random_device &seed, std::string &f) {
     int l;
     std::cout << "Enter a file name: ";
     std::cin >> f;

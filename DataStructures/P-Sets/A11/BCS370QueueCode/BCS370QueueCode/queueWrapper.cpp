@@ -1,6 +1,6 @@
 #include <iostream>
-
 #include "BCS370_queueBase.h"
+#include "queueWrapper.h"
 
 farmingdale::statusCode farmingdale::queueWrapper::enqueue(std::string s) {
     stlQueue.push(s);
@@ -22,10 +22,12 @@ farmingdale::statusCode farmingdale::queueWrapper::dequeue(std::string &s) {
     }
     s = stlQueue.front();
     stlQueue.pop();
-    test = stlQueue.front();
-    if (s != test) {
-        return SUCCESS;
-    }
-    return FAILURE;
+    return SUCCESS;
 }
 
+ bool farmingdale::queueWrapper::isEmpty() {
+    if (stlQueue.empty()) {
+        return true;
+    }
+    return false;
+}
