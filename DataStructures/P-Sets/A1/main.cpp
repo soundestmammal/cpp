@@ -5,40 +5,38 @@
 #include <ctime>
 #include <random>
 
-using namespace std;
-
 // Function Prototype
-int generateZeroToFive(random_device &seed);
-int generateMinMax( random_device &seed);
-void userInput(random_device &seed);
-void randomStream(string filename, int length,  random_device &seed);
+int generateZeroToFive(std::random_device &seed);
+int generateMinMax(std::random_device &seed);
+void userInput(std::random_device &seed);
+void randomStream(std::string filename, int length,  std::random_device &seed);
 
 int main() {
-    random_device rd;
+    std::random_device rd;
 
     userInput(rd);
 
     return 0;
 }
 
-void userInput(random_device &seed) {
-    string f;
+void userInput(std::random_device &seed) {
+    std::string f;
     int l;
-    cout << "Enter a file name: ";
-    cin >> f;
-    cout << "Enter a length:  ";
-    cin >> l;
+    std::cout << "Enter a file name: ";
+    std::cin >> f;
+    std::cout << "Enter a length:  ";
+    std::cin >> l;
     if (l <= 0 || f == "") {
-        cerr << "This is a problem at line " << __LINE__ << endl;
+        std::cerr << "This is a problem at line " << __LINE__ << std::endl;
         exit(1);
     }
     randomStream(f, l, seed);
 }
 
-void randomStream(string filename, int length,  random_device &seed) {
+void randomStream(std::string filename, int length,  std::random_device &seed) {
 
     int randZeroToFive;
-    ofstream output;
+    std::ofstream output;
     output.open(filename);
 
     for (int i = 0; i < length; i++) {
@@ -47,25 +45,25 @@ void randomStream(string filename, int length,  random_device &seed) {
 
         switch(randZeroToFive) {
             case 0:
-                output << "A" << " " << generateMinMax(seed) << endl;
+                output << "A" << " " << generateMinMax(seed) << std::endl;
                 break;
             case 1:
-                output << "D" << endl;
+                output << "D" << std::endl;
                 break;
             case 2:
-                output << "P" << endl;
+                output << "P" << std::endl;
                 break;
             case 3: 
-                output << "E" << endl;
+                output << "E" << std::endl;
                 break;
             case 4:
-                output << "C" << endl;
+                output << "C" << std::endl;
                 break;
             case 5:
-                output << "S" << endl;
+                output << "S" << std::endl;
                 break;
             default:
-                output << "Something is wrong!" << endl;
+                output << "Something is wrong!" << std::endl;
                 break;
         }
          
@@ -74,17 +72,17 @@ void randomStream(string filename, int length,  random_device &seed) {
 
 }
 
-int generateZeroToFive(random_device &seed) {
+int generateZeroToFive(std::random_device &seed) {
     // random_device rd;  // seeding a random number rd
     // Create an object called gen of type mersenne twister engine
     // The constructor accepts a seed or a seed sequence
-    mt19937 gen(seed());  
-    uniform_int_distribution<> dis(0, 5); // set bounds of dist
+    std::mt19937 gen(seed());  
+    std::uniform_int_distribution<> dis(0, 5); // set bounds of dist
     return dis(gen);
 }
 
-int generateMinMax( random_device &seed) {
-    mt19937 gen(seed());
-    uniform_int_distribution<> dis(INT_MIN, INT_MAX);
+int generateMinMax(std::random_device &seed) {
+    std::mt19937 gen(seed());
+    std::uniform_int_distribution<> dis(INT_MIN, INT_MAX);
     return dis(gen);
 }
