@@ -122,7 +122,7 @@ farmingdale::LinkedList::~LinkedList() {
 }
 
 // Operator =
-const farmingdale::LinkedList & farmingdale::LinkedList::operator=(LinkedList here) {
+const farmingdale::LinkedList & farmingdale::LinkedList::operator=(LinkedList copyMe) {
     // 1. Ok so I am going to use copy swap...
 
     // Since I am passing here by value, here will be a copy of LinkedList.
@@ -134,11 +134,20 @@ const farmingdale::LinkedList & farmingdale::LinkedList::operator=(LinkedList he
     // Temp is the address of the old head.
     Node* tempHead = this->head;
     Node* tempTail = this->tail;
-    this->head = here.head;
-    this->tail = here.tail;
+    this->head = copyMe.head;
+    this->tail = copyMe.tail;
 
-    here.head = tempHead;
-    here.tail = tempTail;
+    copyMe.head = tempHead;
+    copyMe.tail = tempTail;
+
+    // copy/swap
+    // Node * temp = head;
+    // head = copyMe.head;
+    // copyMe.head = temp;
+    // temp = tail;
+    // tail = copyMe.tail;
+    // copyMe.tail = temp;
+    // return *this;
 
     return *this;
 }
@@ -196,6 +205,16 @@ farmingdale::status farmingdale::LinkedList::removeBack() {
     tail->next = NULL;
     delete nm1;
 
+    /* 
+        if(isEmpty()) 
+            return failure;
+
+        VALUEREMOVED = tail->data
+        Node* current = head;
+        Node* trailCurrent = 0;
+        while(tail!=current)
+    */
+
     return SUCCESS;
 }
 
@@ -208,19 +227,22 @@ farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
         tail = head;
         return SUCCESS;
     }
-    // I need a temp pointer
-    Node* temp = new Node;
+    // 1. I need a temp pointer 
+    Node* temp;
 
-    // try {
-    //     temp->next = new Node;
-    // } catch (std::bad_alloc &ba) {
-    //     ba.what();
-    //     return FAILURE;
-    // }
+    try {
+        temp = new Node;
+    } catch (std::bad_alloc &ba) {
+        ba.what();
+        return FAILURE;
+    }
+    // 2. Fill it in
     temp->data = addMe;
     temp->next = NULL;
 
+    // 3. Next
     tail->next = temp;
+    // 4. The new node is the tail
     tail = temp;
 
     return SUCCESS;
@@ -316,6 +338,15 @@ farmingdale::status farmingdale::LinkedList::insertAfter(Node* afterMe, std::str
     temp->data = addMe;
     temp->next = afterMe->next;
     afterMe->next = temp;
+    /*
+    5 cases
+    empty
+    single node LL
+    (4 node LL)
+        first
+        middle (L or R)
+        Last
+    */
     return SUCCESS;
 
     return FAILURE;
