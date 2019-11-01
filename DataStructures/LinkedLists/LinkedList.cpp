@@ -17,7 +17,7 @@ LinkedList::~LinkedList() {
 
 // Returns true if the LinkedLIst isEmpty Returns False if the LL is not empty
 bool LinkedList::isEmpty() {
-    return (NULL == head ? true : false);
+    return (NULL == head);
 }
 
 // Method to Build the Linked List with user input data
