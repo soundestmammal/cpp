@@ -3,6 +3,7 @@
 #define H_BST
 #include <string>
 #include <iostream>
+#include <vector>
 
 
 namespace farmingdale {
@@ -43,14 +44,18 @@ public:
 		} 
 		else {
 			remove(temp);
+			return SUCCESS;
 		}
 	}
+	std::vector<std::string> inOrder(bstNode* root);
 	void printToStream(std::ostream &);
 	// if item is not there, return 0
 	// const indicates this is an accessor
 	bstNode* search(std::string) const; // done
 	// const indicates this is an accessor
 	inline bool isEmpty() const { return (0 == root); }
+	bool isValidBST(bstNode* root);
+	status kthSmallest(std::string&, int k);
 };
 
 // does an inorder traversal and prints the output

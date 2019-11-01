@@ -7,6 +7,7 @@
 
 bool test1();
 int main() {
+	int x;
 	bool passedSoFar = true;
 	passedSoFar = test1();
 	if (!passedSoFar) {
@@ -15,7 +16,7 @@ int main() {
 		std::cerr << "Passed test 1" << std::endl;
 	}
 
-	system("pause");
+	std::cin >> x;
 
 	return 0;
 }
@@ -32,7 +33,7 @@ std::ostream & operator<<(std::ostream & theStream, std::set<std::string> & theS
 bool test1() {
 	farmingdale::bst myBST;
 	std::set<int> mySet;
-
+	std::cout << "Checkpoint 1" << std::endl;
 	std::random_device rd;  //Will be used to obtain a seed for the random number engine
 	std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
 	const int NUM_ITEMS = 10000;
@@ -41,14 +42,25 @@ bool test1() {
 	farmingdale::status status1;
 	std::string string1;
 
+	std::cout << "Checkpoint 2" << std::endl;
+
 	for (int i = 0; i < NUM_ITEMS; ++i) {
 		// get a random number (between 1 and NUM_ITEMS)
+		std::cout << "\nCheckpoint 2a" << std::endl;
+
 		int num = dis(gen);
+		std::cout << "\nCheckpoint 2b" << std::endl;
 		// insert string representation into bst
 		string1 = std::to_string(num);
+		std::cout << "\nCheckpoint 2c" << std::endl;
+
+
+		// This is where I am failing...
 		status1 = myBST.insert(string1);
+		std::cout << "\nCheckpoint 2d" << std::endl;
 		// insert into set
 		ret = mySet.insert(num);
+		
 		// if bst returned FAILURE, it better be that set returned pair::second  == false
 		// if bst returned SUCCESS, it better be that set returned pair::second  == true
 		if (farmingdale::FAILURE == status1 && false != ret.second) {
@@ -58,22 +70,28 @@ bool test1() {
 			std::cerr << "Error at line " << __LINE__ << " iteration " << i << std::endl;
 			return false;
 		}
+		std::cout << "Checkpoint 2e" << std::endl;
 	}
+	std::cout << "\nCheckpoint 3" << std::endl;
 	// cheap way of doing this; not very good;
 	std::set<int>::iterator myIter = mySet.begin();
+
 	while (mySet.end() != myIter) {
 		// look for string rep of -(*myIter) in BST. it should fail
 		string1 = std::to_string(-(*myIter));
+		std::cout << "\nCheckpoint 3a" << std::endl;
 		if (0 != myBST.search(string1)) {
 			std::cerr << "Error at line " << __LINE__ << " looking for " << string1 << std::endl;
 			return false;
 		}
+		std::cout << "\nCheckpoint 3b" << std::endl;
 		// look for string rep of (*myIter+2*NUM_ITEMS) in BST. it should fail
 		string1 = std::to_string((*myIter) + (2 * NUM_ITEMS));
 		if (0 != myBST.search(string1)) {
 			std::cerr << "Error at line " << __LINE__ << " looking for " << string1 << std::endl;
 			return false;
 		}
+		std::cout << "\nCheckpoint 3c" << std::endl;
 		// look for string per of *myIter in BST. This should succeed.
 		string1 = std::to_string(*myIter);
 		if (0 == myBST.search(string1)) {
@@ -81,15 +99,24 @@ bool test1() {
 			return false;
 		}
 		myIter++;
+		static int acounter = 0;
+		acounter++;
+		std::cout << "\nCheckpoint 3z " << acounter << std::endl;
+	
 	}
+
+	std::cout << "\nCheckpoint 4" << std::endl;
+	static int counter4 = 0;
 	// remove about NUM_ITEMS/5 from the BST and set. Store somewhere
 	std::set<std::string> removedSet;
 	std::pair<std::set<std::string>::iterator, bool> retS;
 	farmingdale::bstNode *aNode;
 	std::uniform_int_distribution<> smallDis(1, 5);
 	myIter = mySet.begin();
+	std::cout << "\nCheckpoint 4a" << std::endl;
 	while (mySet.end() != myIter) {
 		int num = smallDis(gen);
+		std::cout << "\nCheckpoint 4b" << std::endl;		
 		if (2 == num) {
 			// store this item in removedSet, and remove from myBST
 			string1 = std::to_string(*myIter);
@@ -100,6 +127,14 @@ bool test1() {
 				// std::cerr << "RemovedSet is " << removedSet << std::endl;
 				return false;
 			}
+			std::cout << "\nCheckpoint 4c" << std::endl;
+			aNode = myBST.search(string1);
+			std::cout << "0 means it is not null     " << (0 == aNode) << std::endl;
+			if(NULL != aNode) {
+				std::cout << "LEFT	" << (aNode->leftChild == NULL) << std::endl;
+				std::cout << "RIGHT	" << (aNode->rightChild == NULL) << std::endl;
+			}
+			std::cout << "\nCheckpoint 4d" << std::endl;
 			if (0 == (aNode = myBST.search(string1)) || farmingdale::FAILURE == myBST.remove(aNode)) {
 				std::cerr << "Error at line " << __LINE__ << " removing " << string1 << std::endl;
 				return false;
@@ -107,7 +142,12 @@ bool test1() {
 			// std::cerr << "Removed " << string1 << std::endl;
 		}
 		myIter++;
+		counter4++;
+		std::cout << "\nCheckpoint 4e" << std::endl;
+		std::cout << "This is the 4th counter " << counter4 << std::endl;
 	}
+	std::cout << "\nCheckpoint 5" << std::endl;
+
 	// check the item are not in BST
 	myIter = mySet.begin();
 	while (mySet.end() != myIter) {
