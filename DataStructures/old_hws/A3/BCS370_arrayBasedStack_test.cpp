@@ -31,19 +31,24 @@ void myMemoryPlayFunction() {
 }
 
 int main() {
+
 	bool failed = false;
-	failed = normalTest(50000);
-	if (!failed) {
-		copyCtorTest();
-	}
-	if (false == failed) {
-		std::cout << "Passed the [non-exhaustive] test." << std::endl;
+
+	failed = normalTest(100);
+	if (failed) {
+		std::cerr << "The test failed at line " << __LINE__ << std::endl;
+		exit(1);
 	}
 
-	// more portable method than system("pause");
-	// getchar();
+	failed = copyCtorTest();
+	if (failed) {
+		std::cerr << "The test failed at line " << __LINE__ << std::endl;
+		exit(1);
+	}
 
-	testStack();
+	std::cout << "Passed the [non-exhaustive] test." << std::endl;
+
+	// testStack();
 
 	return 0;
 }
