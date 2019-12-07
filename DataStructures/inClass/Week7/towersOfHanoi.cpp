@@ -9,7 +9,7 @@ int main() {
     // startPole
     // destPole
 
-    solveLucas(50, 'A', 'C', 'B');
+    solveLucas(30, 'A', 'C', 'B');
 
     std::cin >> x;
     return 0;
