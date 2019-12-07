@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include "stack.h"
+#include "mysteryStack.h"
 
 // using  farmingdale::FAILURE;
 // using  farmingdale::SUCCESS;
@@ -23,23 +24,25 @@
 // void peakAll();
 // void popAll();
 // void doSomething(std::string s);
-bool testStream();
+int testStream();
 
 int main() {
-
-	if(testStream()) {
+    int response = testStream();
+	if(0 == response) {
         std::cout << "congrats! your test stream passed all tests" << std::endl;
     } else {
         std::cout << "Sorry, some tests failed" << std::endl;
+        std::cout << response << std::endl;
     }
 
 	return 0;
 }
 
-bool testStream() {
+int testStream() {
     // Create two stacks
     farmingdale::stack s1;
     farmingdale::stack s2;
+    mystery::stack s3(20);
 
     // Which file would you like to read?
 	std::string f;
@@ -53,7 +56,7 @@ bool testStream() {
     // Handle error
 	if(!file) {
 		std::cerr << "I was not able to locate that file... " << __LINE__ <<  std::endl;
-        return false;
+        return __LINE__;
 	}
 
     // Item is a temp string variable
@@ -74,18 +77,19 @@ bool testStream() {
         else if('D' == item[0]) {           // This is when I POP!!!
             
             // Create string variables to compare returned values
-            std::string a, b, c, d;
-            s1.peek(c);
-            s2.peek(d);
+            std::string a, b, c, d, e;
+            s1.peek(a);
+            s2.peek(b);
+            s3.peek(c);
 
             // Check if they return failure, or if the peeked values are different.
-            if(farmingdale::FAILURE == s1.pop(a) || farmingdale::FAILURE == s2.pop(b) || a != b) {
+            if(a != b || b != c) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
-                return false;
+                return __LINE__;
             }
 
             // CONSOLE LOG
-            std::cout << "\tStack_1's top is " << c << " popped value is " << a << " Stack_2's top is " << d << " popped value is " << b;
+            std::cout << "\tStack_1's top is " << a << " popped value is " << a << " Stack_2's top is " << d << " popped value is " << b;
 
         } else if('E' == item[0]) {
                 std::cout << "\tThis was an E";
@@ -93,16 +97,18 @@ bool testStream() {
                 // I need to fix this... peek is not really working...
                 std::string c;
                 std::string d;
+                std::string e;
 
             // std::cout << s1.peek(c) << std::endl;
 
-            if(s1.peek(c) != s2.peek(d)) {
+            if(s1.peek(c) != s2.peek(d) || mystery::statusCode::FAILURE == s3.peek(e)) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
-                return false;
+                return __LINE__;
             }
 
             s1.peek(c);
             s2.peek(d);
+            s3.peek(e);
 
             if(lineNumber == 1) {
                 std::cout << "\tPeak an Empty Stack";
@@ -110,9 +116,9 @@ bool testStream() {
                 std::cout << "\t" << c << "is equal to " << d;
             }
             
-            if(c != d) {
+            if(c != d || c!=e) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
-                return false;
+                return __LINE__;
             }
         
 		    // std::cout << "This was a P" << std::endl; // Peak the stack
@@ -120,9 +126,9 @@ bool testStream() {
 		    std::cout << "\tThis was an S";
 	    } else {
             std::string value = item.substr(2,100);
-            if(farmingdale::FAILURE == s1.push(value) || farmingdale::FAILURE == s2.push(value)) {
+            if((farmingdale::FAILURE == s1.push(value) != farmingdale::FAILURE == s2.push(value)) || mystery::FAILURE == s3.push(value)) {
                 std::cerr << "There was an error on line " << __LINE__ << std::endl;
-                return false;
+                return __LINE__;
             }
             std::string c;
             std::string d;
@@ -135,7 +141,7 @@ bool testStream() {
         // FOR CONSOLE
         std::cout << "\n";
 	}
-    return true;
+    return 0;
 }
 
 // void pushAll(std::string s) {
