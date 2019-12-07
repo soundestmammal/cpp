@@ -4,6 +4,7 @@
 #define H_LINKEDLIST
 
 #include <string>
+#include <deque>
 
 namespace farmingdale {
 	class Node;
@@ -55,13 +56,17 @@ public:
 		return ((0 == nodeToRemove) ? FAILURE : remove(nodeToRemove));
 		// or [if remove can take NULL] replace the entire thing with 
 //		return(remove(search(removeMe)));
-	}
+	};
+	bool operator==(const LinkedList&) const;
+	bool operator==(const std::deque<std::string>&) const;
 	// delete list items
-		void deleteList();
+	void deleteList();
+	void sort();
 };
-
-
-
-
+inline bool operator!=(const farmingdale::LinkedList &lhs, farmingdale::LinkedList&rhs) { return (!(lhs == rhs)); }
+// FIX THESE IN CLASS
+inline bool operator!=(const farmingdale::LinkedList &lhs, const std::deque<std::string>&rhs) { return (!(lhs == rhs)); }
+inline bool operator!=(const std::deque<std::string> &lhs, const farmingdale::LinkedList &rhs) { return (!(rhs == lhs)); }
+inline bool operator==(const std::deque<std::string> &lhs, const farmingdale::LinkedList &rhs) { return (!(rhs == lhs)); }
 
 #endif
