@@ -58,11 +58,10 @@ bool frontTest() {
     std::list<std::string> ForwardList;
     farmingdale::LinkedList MyLinkedList;
 
-    int iterations = 100;
-    for (int i = 0; i < iterations; i++)
-    {
-        ForwardList.push_front(std::to_string(iterations + i));    
-        MyLinkedList.addToFront(std::to_string(iterations + i)); 
+    int iterations = 5;
+    for (int i = 0; i < iterations; i++) {
+        ForwardList.push_front(std::to_string(iterations - i));    
+        MyLinkedList.addToFront(std::to_string(iterations - i)); 
     }
 
     while(!ForwardList.empty() && !MyLinkedList.isEmpty()) {
@@ -82,6 +81,7 @@ bool frontTest() {
             std::cerr << "There was an error on line " << __LINE__ << std::endl;
             return true;
         }
+        
         ForwardList.pop_front();
         MyLinkedList.removeFront();
     }
@@ -94,7 +94,7 @@ bool backTest() {
     std::list<std::string> ForwardList;
     farmingdale::LinkedList MyLinkedList;
 
-    int iterations = 100;
+    int iterations = 5;
     for (int i = 0; i < iterations; i++)
     {
         ForwardList.push_back(std::to_string(i));
@@ -129,7 +129,7 @@ bool backTest() {
 
 // search test
 bool searchTest() {
-    const int iterations = 1000;
+    const int iterations = 5;
     std::list<std::string> ForwardList;
     farmingdale::LinkedList MyLinkedList;
     // 1. Randomly generate a number [0, Iterations]
@@ -183,7 +183,7 @@ bool searchTest() {
 // Test for remove a random Node
 bool removeTest() {
     std::cout << "\nThis is the remove test *****************" << std::endl;
-    const int iterations = 100;
+    const int iterations = 5;
     std::list<std::string> ForwardList;
     farmingdale::LinkedList MyLinkedList;
     // 1. Randomly generate a number [0, Iterations]
