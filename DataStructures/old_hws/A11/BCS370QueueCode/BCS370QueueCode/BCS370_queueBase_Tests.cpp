@@ -24,19 +24,41 @@ void streamTest();
 farmingdale::statusCode copyCtorTest();
 
 int main() {
+	int a, aa, aaa, aaaa;
 	farmingdale::queue myq;
 	bool failed = false;
+	
+	std::cout << __LINE__ << std::endl;
+	std::cin >> a;
+
 	for (int i = 0; i < myq.minQueueSize(); ++i) {
 		if (farmingdale::FAILURE == myq.enqueue(std::to_string(i + 1000))) {
 			std::cerr << "Error on line " << __LINE__ << std::endl;
 			failed = true;
 		}
 	}
+
+	std::cout << __LINE__ << std::endl;
+	std::cin >> aa;
+
+
 	if (farmingdale::SUCCESS != myq.enqueue(std::to_string(myq.minQueueSize() + 1000))) {
 		std::cerr << "Error on line " << __LINE__ << std::endl;
 		failed = true;
 	}
 	std::string j;
+
+	std::cout << __LINE__ << std::endl;
+	std::cin >> aaa;
+
+	
+	
+
+	std::cout << __LINE__ << std::endl;
+	std::cin >> aaa;
+
+	
+
 	for (int i = 0; i < myq.minQueueSize(); ++i) {
 		if (farmingdale::FAILURE == myq.dequeue(j) || j != std::to_string(1000 + i)) {
 			std::cerr << "Error on line " << __LINE__ << " j is " << j << " and i is " << i << std::endl;

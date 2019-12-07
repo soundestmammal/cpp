@@ -23,7 +23,6 @@ namespace farmingdale {
 	class queueWrapper;
 	class Node;
 	class LinkedList;
-	class llqueue;
 }
 
 class farmingdale::queue {
