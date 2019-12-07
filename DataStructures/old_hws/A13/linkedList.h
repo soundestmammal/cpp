@@ -6,10 +6,10 @@
 
 #include <string>
 #include <deque>
+#include "BCS370_queueBase.h"
 namespace farmingdale {
 	struct llStringNode;
 	class stringLinkedList;
-	enum status { FAILURE, SUCCESS };
 }
 
 // a node of my ll
@@ -37,20 +37,20 @@ public:
 
 
 	// DLL Assignment: make sure to set new prev, and current head->prev
-	status insertAtHead(std::string);
+	statusCode insertAtHead(std::string);
 
 
 	// DLL Assignment: modify to do remove in O(1)
-	status removeAtTail(std::string &);  // NOT GONNA WRITE IT
+	statusCode removeAtTail(std::string &);  // NOT GONNA WRITE IT
 
 
 	// DLL Assignment: set the new node's prev
-	status insertAtTail(std::string);  // NOT GONNA WRITE IT
+	statusCode insertAtTail(std::string);  // NOT GONNA WRITE IT
 
 
 
 	// DLL Assignment: fix prev on new head
-	status removeAtHead(std::string &);
+	statusCode removeAtHead(std::string &);
 
 
 
@@ -61,22 +61,22 @@ public:
 
 	// Note that position 1 is the first element (head)
 	llStringNode *findAtPostion(int) const;  // NOT GONNA WRITE IT
-	status getHead(std::string &) const;  // NOT GONNA WRITE IT
-	status getTail(std::string &) const;
+	statusCode getHead(std::string &) const;  // NOT GONNA WRITE IT
+	statusCode getTail(std::string &) const;
 	// this can be done inline easily
 	inline bool isEmpty() const { return (0 == head); }
 	inline bool contains(std::string findMe) const { return (0 != search(findMe)); }
 	
 	// DLL Assignment: fix the prev pointer on new node and on its ->next
-	status insertAfter(llStringNode *, std::string);  // NOT GONNA WRITE IT
+	statusCode insertAfter(llStringNode *, std::string);  // NOT GONNA WRITE IT
 	
 	// status removeAfter(llStringNode *);
 
 	// DLL Assignment: fix all the pointers. Also no traversal now
 	// O(N) because we need to traverse
-	status remove(llStringNode *);
+	statusCode remove(llStringNode *);
 	// inefficient because it takes 2 passes
-	inline status remove(std::string removeMe) {
+	inline statusCode remove(std::string removeMe) {
 		llStringNode * nodeToRemove = search(removeMe);
 		// safest alternative
 		return ((0 == nodeToRemove) ? FAILURE : remove(nodeToRemove));

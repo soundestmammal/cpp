@@ -30,22 +30,39 @@ farmingdale::queue::queue(const queue& copyMe)
 // nextInsert starts at 0
 
 {
-	oldestIndex = copyMe.oldestIndex;
+	// oldestIndex = copyMe.oldestIndex;
+	// bufferSize = copyMe.bufferSize;
+	// nextInsertIndex = 0;
+
+	// data = new std::string[bufferSize];
+
+	// // loop through copyMe, from oldest to nextInsert
+	// for (int i = copyMe.oldestIndex; i != copyMe.nextInsertIndex; i = getNextIndex(i)) {
+	// 	// put the item in the next slot in data
+	// 	data[nextInsertIndex] = copyMe.data[i];
+	// 	// advance the index (nextInsert) on data 
+	// 	// This actually will never roll over, so could be ++, but we'll leave it
+	// 	nextInsertIndex = getNextIndex(nextInsertIndex);
+	// }
+
+	oldestIndex = 0;
 	bufferSize = copyMe.bufferSize;
 	nextInsertIndex = 0;
 
 	data = new std::string[bufferSize];
-
-	// loop through copyMe, from oldest to nextInsert
-	for (int i = copyMe.oldestIndex; i != copyMe.nextInsertIndex; i = getNextIndex(i)) {
-		// put the item in the next slot in data
-		data[nextInsertIndex] = copyMe.data[i];
-		// advance the index (nextInsert) on data 
-		// This actually will never roll over, so could be ++, but we'll leave it
-		nextInsertIndex = getNextIndex(nextInsertIndex);
+	
+	int to = 0;
+	for (int i = copyMe.oldestIndex; i != copyMe.nextInsertIndex; i = getNextIndex(i))
+	{
+		// I want to put the item in the next spot.
+		data[to] = copyMe.data[i];
+		
+		++to;
+		++nextInsertIndex;
 	}
+	
 }
-
+/*
 farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 	// if full, return FAILURE
 	if (isFull()) {
@@ -90,6 +107,51 @@ farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 	nextInsertIndex = getNextIndex(nextInsertIndex);
 	// return SUCCESS
 	return SUCCESS;
+}*/
+
+farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
+	// If it is full, create a new array
+	if(isFull()) {
+		bufferSize = bufferSize*2;
+		
+		std::string * temp;
+		// try catch, return failure
+		try {
+			temp = new std::string[bufferSize];
+		} catch(std::bad_alloc) {
+			return FAILURE;
+		}
+
+		// copy the elements over
+		int to = 0;
+
+		for (int i = oldestIndex; i != nextInsertIndex; i = getNextIndex(i))
+		{
+			temp[to] = data[i];
+			++to;
+		}
+
+		// Now I have an array, with all of the items copied over.
+
+		delete[] data;
+
+		data = temp;
+		
+		oldestIndex = 0;
+
+		nextInsertIndex = to;
+	}
+
+	data[nextInsertIndex] = addMe;
+
+	nextInsertIndex = getNextIndex(nextInsertIndex);
+	
+	return SUCCESS;
+	// add the item into the array
+
+	// increment the nextInsertIndex
+
+	// return success
 }
 farmingdale::statusCode farmingdale::queue::dequeue(std::string &returnedElement) {
 	// if empty, return FAILURE

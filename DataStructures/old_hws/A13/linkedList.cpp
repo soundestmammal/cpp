@@ -83,7 +83,7 @@ void farmingdale::stringLinkedList::sort() {
 	recursiveMergeSort(head,tail);
 }
 
-farmingdale::status farmingdale::stringLinkedList::insertAtHead(std::string addMe) {
+farmingdale::statusCode farmingdale::stringLinkedList::insertAtHead(std::string addMe) {
 	llStringNode  * temp;
 	try {
 		temp = new llStringNode;
@@ -125,14 +125,14 @@ farmingdale::stringLinkedList::~stringLinkedList() {
 	tail = 0;
 }
 
-farmingdale::status farmingdale::stringLinkedList::getTail(std::string &returnMe) const {
+farmingdale::statusCode farmingdale::stringLinkedList::getTail(std::string &returnMe) const {
 	if (isEmpty()) {
 		return FAILURE;
 	}
 	returnMe = tail->data;
 	return SUCCESS;
 }
-farmingdale::status farmingdale::stringLinkedList::getHead(std::string &returnMe) const {
+farmingdale::statusCode farmingdale::stringLinkedList::getHead(std::string &returnMe) const {
 	if (isEmpty()) {
 		return FAILURE;
 	}
@@ -196,7 +196,7 @@ farmingdale::stringLinkedList::stringLinkedList(const stringLinkedList& copyMe)
 	}
 }
 
-farmingdale::status farmingdale::stringLinkedList::removeAtTail(std::string &valueRemoved) {
+farmingdale::statusCode farmingdale::stringLinkedList::removeAtTail(std::string &valueRemoved) {
 	if (isEmpty()) {
 		return FAILURE;
 	}
@@ -238,7 +238,7 @@ farmingdale::status farmingdale::stringLinkedList::removeAtTail(std::string &val
 		return SUCCESS;
 	*/
 }
-farmingdale::status farmingdale::stringLinkedList::insertAfter(llStringNode *insertAfterMe, std::string addMe) {
+farmingdale::statusCode farmingdale::stringLinkedList::insertAfter(llStringNode *insertAfterMe, std::string addMe) {
 	llStringNode * newNode;
 	try {
 		newNode = new llStringNode;
@@ -270,7 +270,7 @@ farmingdale::llStringNode *farmingdale::stringLinkedList::findAtPostion(int posi
 }
 
 
-farmingdale::status farmingdale::stringLinkedList::insertAtTail(std::string addMe) {
+farmingdale::statusCode farmingdale::stringLinkedList::insertAtTail(std::string addMe) {
 	/* This would be the easy way
 	if (isEmpty()) {
 		return(insertAtHead(addMe));
@@ -328,7 +328,7 @@ farmingdale::llStringNode* farmingdale::stringLinkedList::search(std::string fin
 
 
 
-farmingdale::status farmingdale::stringLinkedList::remove(llStringNode * removeMePlease) {
+farmingdale::statusCode farmingdale::stringLinkedList::remove(llStringNode * removeMePlease) {
 	if(head == tail) {
 		std::cout << "\n\n\n This is start case 1" << std::endl;
 
@@ -449,7 +449,7 @@ farmingdale::stringLinkedList::stringLinkedList()
 
 
 
-farmingdale::status farmingdale::stringLinkedList::removeAtHead(std::string &theValueFormerlyKnownAsHead) {
+farmingdale::statusCode farmingdale::stringLinkedList::removeAtHead(std::string &theValueFormerlyKnownAsHead) {
 	if (isEmpty()) {
 		return FAILURE;
 	}

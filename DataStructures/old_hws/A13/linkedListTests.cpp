@@ -6,6 +6,7 @@
 #include <deque>
 #include <limits>
 #include "linkedList.h"
+#include "llqueue.h"
 
 bool testOne();
 bool sortTest();
