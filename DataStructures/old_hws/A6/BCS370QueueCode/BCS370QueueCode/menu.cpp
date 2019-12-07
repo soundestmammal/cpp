@@ -64,12 +64,6 @@ int main() {
             // Tell the user if it passed or failed
 
             working = testStream(f);
-            // if(testStream(f)) {
-            //     std::cout << "congrats! your test stream passed all tests" << std::endl;
-            // } else {
-            //     std::cout << "Sorry, some tests failed" << std::endl;
-            // }
-
 
         // Run randomStream
         // Run testStream on the filename
@@ -339,3 +333,7 @@ int generateMinMax(std::random_device &seed) {
     std::uniform_int_distribution<> dis(INT_MIN, INT_MAX);
     return dis(gen);
 }
+
+/*
+Uncomment Line Numbers
+*/

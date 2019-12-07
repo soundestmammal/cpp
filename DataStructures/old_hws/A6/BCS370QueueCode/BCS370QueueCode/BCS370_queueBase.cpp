@@ -35,18 +35,20 @@ farmingdale::queue::queue(const queue& copyMe)
 	nextInsertIndex = 0;
 
 	data = new std::string[bufferSize];
-
+	int to = 0;
 	// loop through copyMe, from oldest to nextInsert
 	for (int i = copyMe.oldestIndex; i != copyMe.nextInsertIndex; i = getNextIndex(i)) {
 		// put the item in the next slot in data
-		data[nextInsertIndex] = copyMe.data[i];
+		data[to] = copyMe.data[i];
 		// advance the index (nextInsert) on data 
 		// This actually will never roll over, so could be ++, but we'll leave it
-		nextInsertIndex = getNextIndex(nextInsertIndex);
+		//nextInsertIndex = getNextIndex(nextInsertIndex);
+		++to;
 	}
+	nextInsertIndex = to;
 }
 
-
+/*
 // THIS IS NOT CIRCULAR DUDE
 farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 	// if full, return FAILURE
@@ -77,7 +79,7 @@ farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 		std::cout << "THIS IS OVER HERE IT NEEDS TO BE FOUND" << std::endl;
 		for (int i = 0; i < 32; i++)
 		{
-			std::cout << temp[i];
+			std::cout << temp[i] << " ";
 		}
 
 		std::cout << std::endl;
@@ -103,6 +105,37 @@ farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
 	return SUCCESS;
 	}
 }
+*/
+
+farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
+	if(isFull()) {
+		std::string * temp;
+		bufferSize = bufferSize*2;
+
+		try {
+			temp = new std::string[bufferSize];
+		} catch(std::bad_alloc) {
+			return FAILURE;
+		}
+		
+		int to = 0;
+		for (int i = oldestIndex; i != nextInsertIndex; ++i) {
+			temp[to] = data[i];
+			++to;
+		}
+		
+		oldestIndex = 0;
+		nextInsertIndex = to;
+		delete[] data;
+		data = temp;
+	}
+
+	data[nextInsertIndex] = addMe;
+	nextInsertIndex = getNextIndex(nextInsertIndex);
+	return SUCCESS;
+}
+
+
 farmingdale::statusCode farmingdale::queue::dequeue(std::string &returnedElement) {
 	// if empty, return FAILURE
 	if (isEmpty()) {

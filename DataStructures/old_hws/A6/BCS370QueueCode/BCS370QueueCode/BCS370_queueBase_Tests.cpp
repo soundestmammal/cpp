@@ -26,17 +26,26 @@ farmingdale::statusCode copyCtorTest();
 int main() {
 	farmingdale::queue myq;
 	bool failed = false;
+
+	// This tests the queue for enqueue before the queue dynamically allocates more space
 	for (int i = 0; i < myq.minQueueSize(); ++i) {
 		if (farmingdale::FAILURE == myq.enqueue(std::to_string(i + 1000))) {
 			std::cerr << "Error on line " << __LINE__ << std::endl;
 			failed = true;
 		}
 	}
+
+	// Now we add one more item to the queue, and if it doesn't return success, then there is a problem
 	if (farmingdale::SUCCESS != myq.enqueue(std::to_string(myq.minQueueSize() + 1000))) {
 		std::cerr << "Error on line " << __LINE__ << std::endl;
 		failed = true;
 	}
+
+	// At this point the queue has increased from 16 -> 32.
+
 	std::string j;
+
+	
 	for (int i = 0; i < myq.minQueueSize(); ++i) {
 		if (farmingdale::FAILURE == myq.dequeue(j) || j != std::to_string(1000 + i)) {
 			std::cerr << "Error on line " << __LINE__ << " j is " << j << " and i is " << i << std::endl;

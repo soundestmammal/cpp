@@ -44,6 +44,4 @@ public:
     // Peek
     statusCode peek(std::string &returnedElement);
     
-
-
 };

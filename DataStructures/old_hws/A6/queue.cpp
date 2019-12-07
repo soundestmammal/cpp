@@ -1,4 +1,82 @@
 #include "queue.h"
+#include <string>
+
+farmingdale::queue::queue()
+    :
+    oldestIndex(0),
+    nextInsertIndex(0)
+{
+    
+};
+
+farmingdale::statusCode farmingdale::queue::enqueue(std::string addMe) {
+    if(isFull()) {
+        return FAILURE;
+        // this is where I am going to make this dynamic
+        std::string * temp;
+
+        // try catch block - can I allocate ?
+
+        // I need to copy everything over
+
+        // 
+
+    }
+
+    data[nextInsertIndex] = addMe;
+    nextInsertIndex = getNextIndex(nextInsertIndex);
+    return SUCCESS;
+}
+
+farmingdale::statusCode farmingdale::queue::dequeue(std::string &returnMe) {
+    if (isEmpty()) {
+        return FAILURE;
+    }
+
+    returnMe = data[oldestIndex];
+    oldestIndex++;
+    return SUCCESS;
+}
+
+farmingdale::statusCode farmingdale::queue::peek(std::string &returnMe) {
+    if(isEmpty()) {
+        return FAILURE;
+    }
+
+    returnMe = data[oldestIndex];
+    return SUCCESS;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include "queue.h"
 
 farmingdale::queue::queue() 
 :
