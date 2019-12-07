@@ -6,7 +6,6 @@
 #include <ctime>
 #include <random>
 
-
 // Function Prototype
 int generateZeroToFive();
 int generateMinMax();
@@ -32,17 +31,15 @@ int main() {
         std::cerr << "There is an error at line" << __LINE__ << std::endl;
         exit(1);
     }
+
     std::cout << "I selected " << response << std::endl;
 
     // Respond to User Response
     if(response == 1) {
-        std::cout << "test1" << std::endl;
         std::cout << "Exiting the Menu" << std::endl;
     } else if( response == 2) {
-        std::cout << "test2" << std::endl;
         randomStream();
     } else if (response == 3) {
-        std::cout << "test3"<< std::endl;
         // Run test stream on a file provided
         // Ask for the file name
         std::string f;
@@ -51,7 +48,6 @@ int main() {
         testStream(f);
         
     } else if (response == 4) {
-        std::cout << "test4" << std::endl;
         // Ask for a file name
             std::string f;
             int l;
@@ -77,8 +73,6 @@ int main() {
         std::cerr << "Something is really bad" << std::endl;
         exit(1);
     }
-
-
 
     return 0;
 }
@@ -181,9 +175,11 @@ bool testStream(std::string f) {
         }
         // FOR CONSOLE
         std::cout << "\n";
+        std::cout << s1.stackCapacity() << std::endl;
 	}
     return true;
 }
+
 void randomStream() {
     std::string f;
     int l;
@@ -230,12 +226,9 @@ void randomStream(std::string filename, int length) {
             default:
                 output << "Something is wrong!" << std::endl;
                 break;
-        }
-         
+        }   
     }
     output.close();
-
-
 }
 
 int generateZeroToFive() {

@@ -14,7 +14,6 @@
 
 #include <string>
 
-
 namespace farmingdale {
 	enum statusCode { SUCCESS, FAILURE }; // you will remove these when you create exceptions
 };
