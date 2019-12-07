@@ -15,7 +15,7 @@ farmingdale::bstNode* copyTree(const farmingdale::bstNode * copyNode) {
     }
     farmingdale::bstNode* newNode = NULL;
     try {
-        newNode = new bstNode(copyNode->data)
+        newNode = new bstNode(copyNode->data);
     } catch(std::bad_alloc) {
         return 0;
     }
@@ -26,7 +26,7 @@ farmingdale::bstNode* copyTree(const farmingdale::bstNode * copyNode) {
     return newNode;
 }
 
-farmigndale::bst::bst(const bst &copyMe) {
+farmingdale::bst::bst(const bst &copyMe) {
     root = copyTree(copyMe.root);
 }
 
@@ -90,6 +90,115 @@ farmingdale::status farmingdale::bst::insert(std::string addMe) {
         trailCurrent->rightChild = newNode;
     }
     return SUCCESS;
+}
+
+bool recursiveCompare(farmingdale::bstNode * one, farmingdale::bstNode * two) {
+    // if one and two are both null
+    if ( NULL == one && NULL == two) {
+        return true;
+    }
+
+    // if only one is equal 
+    if (NULL == one || NULL == two) {
+        return false;
+    }
+
+    // compare the data, if it's 
+    if (one->data != two->data) {
+        return false;
+    }
+    
+    if(!recursiveCompare(one->leftChild, two->leftChild)) {
+        return false;
+    }
+
+    if(!recursiveCompare(one->rightChild, two->rightChild)) {
+        return false;
+    }
+
+    return true;
+}
+int countOfChildren(farmingdale::bstNode* theNode) {
+    int numChildren = 0;
+    if (NULL != theNode->leftChild) {
+        ++numChildren;
+    }
+    if(NULL != theNode->rightChild) {
+        ++numChildren;
+    }
+    return numChildren;
+}
+
+farmingdale::bstNode* findNodesSuccessor(farmingdale::bstNode *theNode) {
+    farmingdale::bstNode* current = theNode->rightChild;
+    while(NULL != current->leftChild) {
+        current = current->leftChild;
+    }
+    return current;
+}
+
+farmingdale::bstNode* findParent(farmingdale::bstNode* root, farmingdale::bstNode *theChild) {
+    farmingdale::bstNode* current = root;
+    farmingdale::bstNode* trailCurrent = NULL;
+
+}
+
+// helper function
+void setCorrectChild(farmingdale::bstNode* theNodeToChange, farmingdale::bstNode* child, farmingdale::bstNode* newChild) {
+    if(theNodeToChange->data > child->data) {
+        theNodeToChange->leftChild = newChild;
+    } else {
+        theNodeToChange->rightChild = newChild;
+    }
+}
+
+farmingdale::status farmingdale::bst::remove(bstNode* removeMe) {
+    bstNode* parent = NULL;
+    bstNode* successor = NULL;
+    std::string theData;
+
+    switch(countOfChildren(removeMe)) {
+        case 0:
+            // find the parent
+            parent = findParent(root, removeMe);
+            // if the node is root, set root to 0
+            if (removeMe == root) {
+                root = 0;
+            } else {
+                // set the parent's corresponding child pointer to 0
+
+            }
+            
+            // delete the node
+            break;
+        case 1:
+
+            // find the parent
+            parent = findParent(root, removeMe);
+            
+            // if the node is root, make our child the root.
+            if(removeMe == root) {
+                root = (0 == removeMe->rightChild)? removeMe->leftChild : removeMe->rightChild;
+            } else {
+                // set the parent's corresonding child pointer to the only child of the node we're deleting
+                setCorrectChild(parent, removeMe, (0 == removeMe->rightChild)? removeMe->leftChild : removeMe->rightChild);
+            }
+
+            // delete the removeMe node
+
+            break;
+        
+        case 2:
+            // Find the successor
+            successor = findNodesSuccessor(removeMe);
+            // store the data from the success
+            theData = successor->data;
+            // delete the successor
+            remove(successor);
+            // store the data into a local 
+            break;
+
+    }
 }
 
 farmingdale::status farmingdale::bst::remove(bstNode* removeMe) {
@@ -202,7 +311,6 @@ farmingdale::status farmingdale::bst::remove(bstNode* removeMe) {
 }
 
 // SEARCH
-
 farmingdale::bstNode* farmingdale::bst::search(std::string s) const {
     // Do a traversal for the node.
     bstNode* current = root;
