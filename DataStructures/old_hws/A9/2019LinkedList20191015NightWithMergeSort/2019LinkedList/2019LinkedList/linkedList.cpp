@@ -275,7 +275,7 @@ farmingdale::Node* farmingdale::LinkedList::search(std::string findMe) {
         return 0;
     };
     Node* temp = head;
-    while(NULL != temp) {
+    while (NULL != temp) {
         // I have found it
         if(findMe == temp->data) {
             return temp;
@@ -307,6 +307,7 @@ farmingdale::Node * farmingdale::LinkedList::getByPosition(int position) {
     }
     return 0;
 }
+
 // getFront
 farmingdale::status farmingdale::LinkedList::getFront(std::string &returnMe) {
     // If it is NONempty Return DATA

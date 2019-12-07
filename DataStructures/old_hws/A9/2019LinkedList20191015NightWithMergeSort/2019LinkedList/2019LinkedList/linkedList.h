@@ -72,9 +72,4 @@ public:
 	// myDeque == ll1
 	inline bool operator==(const std::deque<std::string>&lhs, const farmingdale::LinkedList &rhs) { return (rhs == lhs); }
 
-
-
-
-
-
 #endif
