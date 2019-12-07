@@ -16,7 +16,7 @@ farmingdale::LinkedList::~LinkedList() {
 }
 
 // addToFront
-farmingdale::status farmingdale::LinkedList::addToFront(std::string addMe) {
+farmingdale::statusCode farmingdale::LinkedList::addToFront(std::string addMe) {
     // try {
     //     head = new Node;
     // } catch(std::bad_alloc &ba) {
@@ -40,7 +40,7 @@ farmingdale::status farmingdale::LinkedList::addToFront(std::string addMe) {
 }
 
 // removeback
-farmingdale::status farmingdale::LinkedList::removeBack() {
+farmingdale::statusCode farmingdale::LinkedList::removeBack() {
     if(isEmpty()) {
         std::cerr << "There was an error on line " << __LINE__ << std::endl;
         return FAILURE;
@@ -71,7 +71,7 @@ farmingdale::status farmingdale::LinkedList::removeBack() {
 }
 
 // addToBack
-farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
+farmingdale::statusCode farmingdale::LinkedList::addToBack(std::string addMe) {
     if(isEmpty()){
         head = new Node;
         head->data = addMe;
@@ -98,10 +98,16 @@ farmingdale::status farmingdale::LinkedList::addToBack(std::string addMe) {
 }
 
 // removeFront
-farmingdale::status farmingdale::LinkedList::removeFront() {
+farmingdale::statusCode farmingdale::LinkedList::removeFront() {
     // Check that the linked list is not empty ?
     if(isEmpty()) {
         return FAILURE;
+    }
+    if(head->next == NULL) {
+        delete head;
+        head = NULL;
+        tail = NULL;
+        return SUCCESS;
     }
     Node* temp = head->next;
     // returnMe = head->data; not needed, it returns status, call after getFront
@@ -151,7 +157,7 @@ farmingdale::Node * farmingdale::LinkedList::getByPosition(int position) {
     return 0;
 }
 // getFront
-farmingdale::status farmingdale::LinkedList::getFront(std::string &returnMe) {
+farmingdale::statusCode farmingdale::LinkedList::getFront(std::string &returnMe) {
     // If it is NONempty Return DATA
     if(!isEmpty()) {
         returnMe = head->data;
@@ -161,15 +167,15 @@ farmingdale::status farmingdale::LinkedList::getFront(std::string &returnMe) {
 }
 
 // getBack
-farmingdale::status farmingdale::LinkedList::getBack(std::string &returnMe) {
-    if(!isEmpty()) {
-        returnMe = tail->data;
-        return SUCCESS;
+farmingdale::statusCode farmingdale::LinkedList::getBack(std::string &returnMe) {
+    if(isEmpty()) {
+        return FAILURE;
     } 
-    return FAILURE;
+    returnMe = tail->data;
+    return SUCCESS;
 }
 
-farmingdale::status farmingdale::LinkedList::insertAfter(Node* afterMe, std::string addMe) {
+farmingdale::statusCode farmingdale::LinkedList::insertAfter(Node* afterMe, std::string addMe) {
     /*
     Insert after head
     Insert after a middle node
@@ -186,11 +192,11 @@ farmingdale::status farmingdale::LinkedList::insertAfter(Node* afterMe, std::str
     return FAILURE;
 }
 
-farmingdale::status farmingdale::LinkedList::removeAfter(Node* afterMe) {
+farmingdale::statusCode farmingdale::LinkedList::removeAfter(Node* afterMe) {
     return FAILURE;
 }
 
-farmingdale::status farmingdale::LinkedList::remove(Node* removeMe) {
+farmingdale::statusCode farmingdale::LinkedList::remove(Node* removeMe) {
     Node* temp = head;
     bool flag = true;
     while(flag) {
@@ -220,3 +226,21 @@ void farmingdale::LinkedList::deleteList() {
     tail = NULL;
 }
 
+bool farmingdale::LinkedList::operator==(const farmingdale::LinkedList & rhs) const {
+    // get a pointer to lhs
+    Node* left = head;
+    //get a pointer to rhs
+    Node* right = rhs->head;
+
+    // while I am pointing to two cars, and the cars contain the same animal
+    while(left != NULL && right != NULL && left->data == right->data) {
+        left = left->next;
+        right = right->next;
+    }
+    if( NULL == left && NULL == right) {
+        return true;
+    }
+    return false;
+        // move on
+    // if i'm poining at both ends
+}
